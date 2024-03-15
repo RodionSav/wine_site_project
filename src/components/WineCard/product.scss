@@ -1,0 +1,376 @@
+@import '../../styles/typography';
+@import '../../styles/variables';
+
+.product {
+  &__card {
+    width: 295px;
+  }
+
+  &__list {
+    width: 1280px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    // margin: auto;
+    margin-bottom: 128px;
+
+    &-container {
+      display: flex;
+      justify-content: center;
+      width: 1372px;
+      margin: auto;
+    }
+
+    &-container {
+      display: flex;
+    }
+  }
+
+  &-img {
+    width: 295px;
+    height: 458px;
+    object-fit: cover;
+  }
+
+  &-container {
+    border-bottom: 1px solid #53545a;
+
+  }
+
+  &__title {
+    font-size: 24px;
+    @extend %cormorant-infant-500;
+    line-height: 150%;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    @extend %cormorant-infant-500;
+    line-height: 150%;
+  }
+
+  &__price {
+    font-size: 24px;
+    @extend %mohave-400;
+    line-height: 150%;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+  }
+
+  &__grade {
+    font-size: 24px;
+    @extend %cormorant-infant-500;
+    line-height: 150%;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+  }
+
+  &__star {
+    margin-bottom: 3px;
+  }
+
+  &__button {
+    border: 0;
+    cursor: pointer;
+    background-color: $back-color;
+    background: none;
+    background-repeat: no-repeat;
+    // height: 51px;
+
+    &-heart {
+      border: 0;
+      cursor: pointer;
+      background-color: $back-color;
+      background: none;
+      background-repeat: no-repeat;
+      background-image: url(../../images/heart.svg);
+      width: 22px;
+      height: 24px;
+      margin-top: 5.5px;
+
+      &_active {
+        border: 0;
+        cursor: pointer;
+        background-color: $back-color;
+        background: none;
+        background-repeat: no-repeat;
+        background-image: url(../../images/heart-active-1.svg);
+        width: 20px;
+        height: 18px;
+        // position: relative;
+        margin-top: 8px;
+      }
+    }
+
+
+    &-arrow {
+      &-left {
+        transform: scaleX(-1);
+      }
+    }
+
+    &-container {
+      display: flex;
+      gap: 15px;
+    }
+  }
+
+  &-details {
+    border-bottom: 1px solid #151516;
+    padding-bottom: 48px;
+    margin-bottom: 80px;
+
+    &-container {
+      padding-top: 200px;
+      margin: auto;
+      width: 1280px;
+
+      &-second {
+        margin: auto;
+        width: 1280px;
+      }
+    }
+
+    &__title {
+      line-height: 120%;
+      font-size: 64px;
+      @extend %mohave-400;
+
+      &_ad {
+        font-size: 48px;
+        line-height: 120%;
+        @extend %mohave-400;
+        color: #53545a;
+        margin-bottom: 24px;
+      }
+
+      &-container {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &__mrd {
+      color: #86878d;
+      line-height: 150%;
+      font-size: 24px;
+      @extend %cormorant-infant-500;
+    }
+
+    &__edition {
+      color: #86878d;
+      line-height: 150%;
+      font-size: 24px;
+      margin-top: 16px;
+      margin-bottom: 40px;
+      @extend %cormorant-infant-500;
+    }
+
+    &__list {
+      display: flex;
+      gap: 25px;
+
+      // &:first-child {
+      // }
+    }
+
+    &__item {
+      line-height: 150%;
+      @extend %cormorant-infant-500;
+      font-size: 24px;
+      color: $active-color;
+      margin-left: 8px;
+
+      &-first {
+        list-style: none;
+        margin-left: 0;
+        margin-bottom: 80px;
+      }
+    }
+
+    &__span {
+      // color: red;
+      color: #151516;
+    }
+
+    &__grade {
+      font-size: 20px;
+      @extend %cormorant-infant-500;
+      line-height: 150%;
+      color: #53545a;
+
+      &-container {
+        display: flex;
+        align-items: center;
+        gap: 27px;
+      }
+
+      &__main-container {
+        display: flex;
+        justify-content: space-between;
+        width: 624px;
+      }
+    }
+
+    &__star {
+      &-container {
+        display: flex;
+        gap: 6px;
+      }
+    }
+
+    &__review {
+      @extend %mohave-400;
+      font-size: 16px;
+      line-height: 100%;
+      text-transform: uppercase;
+      color: #53545a;
+
+      &-container {
+        display: flex;
+        align-items: center;
+        margin-top: 32px;
+      }
+    }
+
+    &-pen {
+      margin-left: 10px;
+      margin-right: 17px;
+    }
+
+    &__price {
+      font-size: 64px;
+      @extend %mohave-400;
+      line-height: 120%;
+    }
+
+    &-img {
+      width: 624px;
+
+      &-container {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &__keys {
+      &-container {
+        margin-top: 80px;
+      }
+    }
+
+    &__key {
+      @extend %mohave-500;
+      line-height: 120%;
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #2a2a2d;
+      // color: #53545a;
+
+      &-container {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+      }
+    }
+
+    &__value {
+      @extend %cormorant-infant-500;
+      font-size: 24px;
+      line-height: 150%;
+      color: #53545a;
+      display: flex;
+      justify-content: start;
+      width: 294px;
+      margin-bottom: 32px;
+    }
+
+    &__button {
+
+      border: 0;
+      background-color: $back-color;
+      color: $active-color;
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+      cursor: pointer;
+
+      &-minus {
+        margin-bottom: 15px;
+      }
+
+      &-plus {
+        margin-bottom: 5px;
+      }
+
+      &__main-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      &-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+        width: 173px;
+        border: 1px solid $active-color;
+      }
+    }
+
+    &__number {
+      @extend %mohave-400;
+      line-height: 100%;
+      font-size: 16px;
+      color: $active-color;
+    }
+
+    &__heart-container {
+      display: flex;
+      justify-content: center;
+      width: 90px;
+    }
+
+    &__menu {
+      display: flex;
+      gap: 98px;
+      margin-top: 80px;
+      margin-bottom: 24px;
+
+      &__title {
+        line-height: 120%;
+        font-size: 48px;
+        @extend %mohave-400;
+        color: #86878d;
+        cursor: pointer;
+
+        &-active {
+          color: $active-color;
+        }
+
+      }
+
+      &__paragraph {
+        width: 952px;
+        color: #53545a;
+        font-size: 24px;
+        line-height: 150%;
+        @extend %cormorant-infant-500;
+      }
+    }
+  }
+}

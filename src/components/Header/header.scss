@@ -1,0 +1,154 @@
+@import '../../styles/_typography.scss';
+@import '../../styles/variables';
+
+.header {
+  display: flex;
+  width: 1280px;
+
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 83px;
+  position: absolute;
+  left:50%;
+  transform:translate(-50%);
+  z-index: 1000;
+  // gap: 50px;
+
+  &-first-container {
+    // height: 86vh;
+    min-height: 90vh;
+  }
+
+  &-img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 90vh;
+    background-size: cover;
+    // height: 81vh;
+
+    &-about {
+      background-image: url(../../images//back-about-img.svg);
+      // width: 100%;
+    }
+
+    &-contact {
+      background-image: url(../../images//back-contact-img.svg);
+    }
+
+    &-more {
+      background-image: url(../../images/back-more-img.svg);
+    }
+
+    &-wine {
+      height: 0;
+    }
+
+    &_none {
+      z-index: -1000;
+    }
+  }
+
+  &-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // flex-wrap: nowrap;
+
+    &-first {
+      width: 230px;
+      // gap: 112px;
+      // justify-content: space-between;
+
+    }
+
+    &-second {
+      width: 230px;
+      // gap: 90px;
+      // margin-right: 177px;
+
+      // justify-content: space-between;
+    }
+
+    &-third {
+      // gap: 45px;
+      width: 147px;
+      // display: flex;
+
+      // align-items: center;
+      // justify-content: space-between;
+    }
+  }
+
+  &__main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 620px;
+    // gap: 227px;
+  }
+
+  &__title {
+    // display: flex;
+    // justify-content: space-between;
+    font-size: 24px;
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: black;
+
+    &_active {
+      color: $active-color;
+      font-weight: 600;
+    }
+  }
+
+  &-logo {
+    background-image: url(../../images/LOGO.svg);
+    width: 251px;
+    height: 57px;
+    // margin-right: 77px;
+
+    &-container {
+      width: 947px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__icon {
+    &-plane {
+      width: 22px;
+      height: 18px;
+      background-image: url(../../images/telegram.svg);
+    }
+
+    &-heart {
+      width: 24px;
+      height: 24px;
+      background-image: url(../../images/heart.svg);
+
+      &-active {
+        margin-left: 4.5px;
+        margin-top: 6px;
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+        background-image: url(../../images/heart-active.svg);
+      }
+    }
+
+    &-cart {
+      width: 22px;
+      height: 20px;
+      background-image: url(../../images/shop.svg);
+
+      &-active {
+        background-image: url(../../images/cart.svg);
+      }
+    }
+  }
+
+}

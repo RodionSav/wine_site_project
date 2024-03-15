@@ -1,0 +1,20 @@
+@import '../../styles/typography';
+@import '../../styles/variables';
+
+.favourite {
+  width: 1280px;
+  margin: auto;
+  padding-top: 232px;
+
+  &__title {
+    @extend %mohave-400;
+    font-size: 48px;
+    line-height: 57.6px;
+  }
+
+  &-container {
+    display: flex;
+    gap: 32px;
+    margin-top: 80px;
+  }
+}

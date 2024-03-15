@@ -1,0 +1,45 @@
+@import '../../styles/typography';
+@import '../../styles/variables';
+
+.page {
+  background-color: $back-color;
+
+  &-container {
+    // position: absolute;
+    width: 1280px;
+    // display: flex;
+    // justify-content: start;
+    // flex-direction: column;
+    z-index: 1000;
+    padding-top: 470px;
+    // margin-top: 470px;
+    // top: 470px;
+    // left: 5%;
+  }
+
+  &__title {
+    position: relative;
+    color: #fff;
+    font-size: 64px;
+    z-index: 1000;
+  }
+
+  &__subtitle {
+    @extend %cormorant-infant-500;
+    color: #fff;
+    line-height: 150%;
+  }
+
+  &__button {
+    // position: absolute;
+    width: 296px;
+    height: 42px;
+    background-color: $active-color;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    @extend %mohave-400;
+    cursor: pointer;
+  }
+}

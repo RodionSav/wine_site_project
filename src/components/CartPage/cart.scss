@@ -1,0 +1,198 @@
+@import '../../styles/typography';
+@import '../../styles/variables';
+
+.cart {
+  padding-top: 306px;
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  gap: 32px;
+
+  &-container {
+    &-second {
+      width: 625px;
+    }
+  }
+
+  &__products {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+  }
+
+  &__title {
+    @extend %mohave-400;
+    font-size: 48px;
+    line-height: 57.6px;
+    margin-bottom: 40px;
+  }
+
+  &__subtitle {
+    text-transform: uppercase;
+    @extend %mohave-500;
+    font-size: 24px;
+    line-height: 28.8px;
+    color: #151516;
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    @extend %cormorant-infant-500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #2A2A2D;
+
+  }
+
+  &__input {
+    box-sizing: border-box;
+    background-color: #E1DFD4;
+    border: 1px solid #53545A;
+    @extend %cormorant-infant-500;
+
+    width: 623px;
+    height: 62px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #86878D;
+    padding-left: 16px;
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__inputs {
+    &-container {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__total {
+    @extend %mohave-500;
+    font-size: 24px;
+    line-height: 28.8px;
+    color: #86878D;
+    text-transform: uppercase;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 96px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__radio {
+    border-radius: 100%;
+    // padding: 16px;
+    // border: 3px solid #151516;
+    // cursor: pointer;
+
+
+    &__label {
+      @extend %cormorant-infant-500;
+      font-size: 24px;
+      line-height: 36px;
+    //   padding-left: 16px;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    border-bottom: 2px solid #E1DFD4;
+
+    &-img {
+      width: 105px;
+      height: 185px;
+
+      &-container {
+        display: flex;
+        gap: 24px ;
+      }
+    }
+
+    &__title {
+      width: 159px;
+      color: #000;
+      @extend %cormorant-infant-500;
+      text-transform: capitalize;
+      // font-family: "Cormorant Infant";
+      font-size: 24px;
+      font-style: normal;
+      // font-weight: 500;
+      line-height: 150%;
+    }
+
+    &__price {
+      color: #000;
+      @extend %mohave-400;
+      font-size: 48px;
+      font-style: normal;
+      line-height: 120%;
+      text-transform: uppercase;
+      margin-top: 67px;
+    }
+
+    &__button {
+
+      border: 0;
+      background-color: $back-color;
+      color: $active-color;
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+      cursor: pointer;
+  
+      &-minus {
+        margin-bottom: 15px;
+      }
+  
+      &-plus {
+        margin-bottom: 5px;
+      }
+
+      &__cross {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: none;
+        // background-image: ;
+        border: none;
+        right: 0;
+        cursor: pointer;
+      }
+  
+      &-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+        width: 109px;
+        height: 48px;
+        border: 1px solid $active-color;
+        margin-top: 68px;
+        margin-left: 40px;
+        margin-right: 25px;
+      }
+    }
+
+    &__number {
+      @extend %mohave-400;
+      line-height: 100%;
+      font-size: 16px;
+      color: $active-color;
+    }
+  }
+}
