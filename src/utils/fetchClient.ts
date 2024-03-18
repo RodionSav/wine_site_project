@@ -13,7 +13,7 @@ function wait(delay: number) {
   });
 }
 
-type RequestMethod = 'GET';
+type RequestMethod = 'GET' | 'POST';
 
 function request<T>(
   url: string,
@@ -42,4 +42,5 @@ function request<T>(
 
 export const client = {
   get: <T>(url: string) => request<T>(url),
+  post: <T>(url: string, data: any) => request<T>(url, 'POST', data)
 };

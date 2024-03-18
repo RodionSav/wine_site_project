@@ -117,7 +117,7 @@ export const WinePage = () => {
   useEffect(() => {
     dispatch(actions.productsInit());
 
-  }, [products]);
+  }, []);
 
     const filterProducts = (
       currentSortByColor: string | null,

@@ -109,14 +109,16 @@ export const Header = () => {
     {/* <img src="/images2/back-about-img.svg" className="header-img" /> */}
     <div
       className={classNames(
-        'header-img',
-      {'header-img-about' : (location.pathname === '/about' || location.pathname === '/'),
-       'header-img-contact' : location.pathname === '/contact',
-       'header-img-more' : location.pathname === '/more',
-       'header-img_none': location.pathname === '/products' || location.pathname === '/favourites' ||
-       location.pathname === '/cart'
-
-      })} />
+        '',
+        {
+          'header-img-about': (location.pathname === '/about' || location.pathname === '/'),
+          'header-img-contact': location.pathname === '/contact',
+          'header-img-more': location.pathname === '/more',
+          'header-img': !location.pathname.includes('/' + productId.productId),
+          'header-img_none': location.pathname === '/products' || location.pathname === '/favourites' || location.pathname === '/cart'
+        }
+      )}
+    />
     </header>
   )
 }

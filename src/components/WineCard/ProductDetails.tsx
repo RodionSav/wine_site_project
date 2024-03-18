@@ -6,40 +6,82 @@ import heartImg from '../../images/heart.svg';
 import '../../components/GeneralStyle/Page.scss';
 import plusImg from '../../images/plusImg.svg';
 import minusImg from '../../images/minusImg.svg';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { ProductList } from './ProductList';
 import { useParams } from 'react-router-dom';
 import { getSelectedProduct } from '../../api/products';
-import { ProductDetailsType } from '../../types/Product';
+import { Product, ProductDetailsType } from '../../types/Product';
+import { ProductCardDetailsAction } from '../buttonActions/ProductCardDetailsAction';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import * as productsActions from '../features/productSlicer';
+import * as commentsActions from '../features/commentSlicer';
+import { AddingCommentForm } from '../buttonActions/addingComment';
+import { Review } from './Review';
 
 export const ProductDetails = () => {
   const [toggle, setToggle] = useState(true);
 
-  const [selectedProduct, setSelectedProduct] = useState<ProductDetailsType | null>(null);
+  // const [selectedProduct, setSelectedProduct] = useState<ProductDetailsType | null>(null);
 
   const {productId} = useParams();
 
+  const dispatch = useAppDispatch();
+
+  const currentProduct = useAppSelector(state => state.products.itemDetails);
+
+  const comments = useAppSelector(state => state.comments.items);
+
+  const noComments = 'There is no reviews. You could be first.';
+
+
+  const [isActive, setIsActive] = useState(false);
+
+  // const currentProduct = useMemo(() => {
+  //   return products.find((product: Product) => product.id === Number(productId))
+  // }, [productId, products]);
+
   useEffect(() => {
-    if (productId) {
-      getSelectedProduct(Number(productId))
-        .then((response) => {
-          setSelectedProduct(JSON.parse(JSON.stringify(response)))
-        })
-    }
-  }, [productId]);
+    dispatch(commentsActions.commentsInit(Number(productId)));
+  })
+
+  useEffect(() => {
+    dispatch(productsActions.productDetailsInit(Number(productId)));
+  }, [currentProduct])
+
+  // useEffect(() => {
+  //   if (productId) {
+  //     getSelectedProduct(Number(productId))
+  //       .then((response) => {
+  //         setSelectedProduct(JSON.parse(JSON.stringify(response)))
+  //       })
+  //   }
+  // }, [productId]);
 
   const capitalizeDescription = (caption: string) => {
     return caption.charAt(0).toUpperCase() + caption.slice(1);
   }
 
-  const color = selectedProduct?.colorDescribing ? capitalizeDescription(selectedProduct.colorDescribing) : '';
-  const taste = selectedProduct?.taste ? capitalizeDescription(selectedProduct.taste) : '';
-  const aroma = selectedProduct?.aroma ? capitalizeDescription(selectedProduct.aroma) : '';
-  const gastronomy = selectedProduct?.gastronomy ? capitalizeDescription(selectedProduct.gastronomy) : '';
+  const color = currentProduct?.colorDescribing ? capitalizeDescription(currentProduct.colorDescribing) : '';
+  const taste = currentProduct?.taste ? capitalizeDescription(currentProduct.taste) : '';
+  const aroma = currentProduct?.aroma ? capitalizeDescription(currentProduct.aroma) : '';
+  const gastronomy = currentProduct?.gastronomy ? capitalizeDescription(currentProduct.gastronomy) : '';
+
+  const vendorCode = currentProduct?.vendorCode.slice(0, 3) + ' ' + currentProduct?.vendorCode.slice(3);
+
+  const handleAddReview = () => {
+    setIsActive(!isActive);
+  }
 
   return (
-    <><div className='product-details'>
+    <>
+    {isActive &&
+      <AddingCommentForm
+        isActive={isActive}
+        setIsActive={setIsActive}
+      />
+    }
+    <div className='product-details'>
       <div className="product-details-container">
         <ul className='product-details__list'>
           <li className='product-details__item product-details__item-first'>
@@ -49,24 +91,24 @@ export const ProductDetails = () => {
             <span className='product-details__span'>Wine</span>
           </li>
           <li className='product-details__item'>
-            <span className='product-details__span'>{selectedProduct?.name}</span>
+            <span className='product-details__span'>{currentProduct?.name}</span>
           </li>
         </ul>
         <div className='product-details__title-container'>
-          <h1 className='product-details__title'>{selectedProduct?.name}</h1>
-
-          <h2 className='product-details__mrd'>MRD 2019</h2>
+          <h1 className='product-details__title'>{currentProduct?.name}</h1>
+          <h2 className='product-details__mrd'>{vendorCode}</h2>
+          {/* <h2 className='product-details__mrd'>MRD 2019</h2> */}
         </div>
         <h2 className='product-details__edition'>Limited Edition Wine</h2>
         <div className='product-details-img-container'>
           {/* <img src={productDetailsImg} /> */}
-          <img src={`http://localhost:8080/${selectedProduct?.pictureLink}`} className='product-details-img' />
+          <img src={`http://localhost:8080/${currentProduct?.pictureLink}`} className='product-details-img' />
           <div>
             <div className='product-details__grade__main-container'>
               <div>
                 <div className='product-details__grade-container'>
                   <h2 className='product-details__grade'>3.9</h2>
-                  <h2 className='product-details__grade'>{selectedProduct?.averageRatingScore}</h2>
+                  <h2 className='product-details__grade'>{currentProduct?.averageRatingScore}</h2>
                   <div className='product-details__star-container'>
                     <img src={starImg} />
                     <img src={starImg} />
@@ -77,30 +119,35 @@ export const ProductDetails = () => {
                 </div>
                 <div className='product-details__review-container'>
                   <h2 className='product-details__grade'>2</h2>
-                  <img src={penImg} className='product-details-pen' />
-                  <h2 className='product-details__review'>add review</h2>
+                  <button
+                    className='product-details__button-add-review'
+                    onClick={handleAddReview}
+                  >
+                    <img src={penImg} className='product-details-pen' />
+                    <h2 className='product-details__review'>add review</h2>
+                  </button>
                 </div>
               </div>
               <div>
-                <h1 className='product-details__price'>{`${selectedProduct?.price}UAH`}</h1>
+                <h1 className='product-details__price'>{`${currentProduct?.price}UAH`}</h1>
               </div>
             </div>
             <div className='product-details__keys-container'>
               <div className='product-details__key-container'>
                 <h1 className='product-details__key'>Grape:</h1>
-                <h2 className='product-details__value'>{selectedProduct?.grape}</h2>
+                <h2 className='product-details__value'>{currentProduct?.grape}</h2>
               </div>
               <div className='product-details__key-container'>
                 <h1 className='product-details__key'>Decantation:</h1>
-                <h2 className='product-details__value'>{selectedProduct?.isDecantation ? 'Yes' : 'No'}</h2>
+                <h2 className='product-details__value'>{currentProduct?.isDecantation ? 'Yes' : 'No'}</h2>
               </div>
               <div className='product-details__key-container'>
                 <h1 className='product-details__key'>Type:</h1>
-                <h2 className='product-details__value'>{selectedProduct?.wineType}</h2>
+                <h2 className='product-details__value'>{currentProduct?.wineType}</h2>
               </div>
               <div className='product-details__key-container'>
                 <h1 className='product-details__key'>Strength:</h1>
-                <h2 className='product-details__value'>{`${selectedProduct?.strengthFrom}% - ${selectedProduct?.strengthTo}%`}</h2>
+                <h2 className='product-details__value'>{`${currentProduct?.strengthFrom}% - ${currentProduct?.strengthTo}%`}</h2>
               </div>
               <div className='product-details__key-container'>
                 <h1 className='product-details__key'>Colour:</h1>
@@ -118,23 +165,7 @@ export const ProductDetails = () => {
                 <h1 className='product-details__key'>Gastronomy:</h1>
                 <h2 className='product-details__value'>{gastronomy}</h2>
               </div>
-              <div className='product-details__button__main-container'>
-                <div className='product-details__heart-container'>
-                  <img src={heartImg} />
-                </div>
-                <div className='product-details__button-container'>
-                  <button className='product-details__button product-details__button-minus'>
-                    <img src={minusImg} />
-                  </button>
-                  <h2 className='product-details__number'>1</h2>
-                  <button className='product-details__button product-details__button-plus'>
-                    <img src={plusImg} />
-                  </button>
-                </div>
-                <button className='page__button'>
-                  Add to cart
-                </button>
-              </div>
+              <ProductCardDetailsAction product={currentProduct} />
             </div>
           </div>
         </div>
@@ -155,10 +186,11 @@ export const ProductDetails = () => {
           </h1>
         </div>
         <div className='product-details__menu__paragraph'>
-          {toggle ?
-            <p>{selectedProduct?.description}</p>
-            :
-            <p>There is no reviews. You could be first.</p>}
+          {toggle && <p>{currentProduct?.description}</p>}
+          {!toggle && comments.length > 0 && comments.map((comment) => (
+            <Review comment={comment} />
+          ))}
+          {!toggle && comments.length === 0 && noComments}
         </div>
       </div>
     </div>

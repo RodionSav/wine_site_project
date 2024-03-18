@@ -1,0 +1,107 @@
+@import '../../styles/typography';
+@import '../../styles/variables';
+
+.comment {
+  &__form {
+    position: fixed;
+    background: rgba(42, 42, 45, 0.80);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+
+    &__main-container {
+    //   position: absolute;
+      background: var(--Secondary-1, #F2F1E9);
+      width: 935px;
+      height: 677px;
+      max-width: auto;
+      box-sizing: border-box;
+      margin: auto;
+      margin-top: 8vh;
+
+      // top: 0;
+      // top: 50%;
+      // right: 50%;
+      // transform:translate(-50%, -50%);
+    }
+
+    &-container {
+      width: 855px;
+      margin: auto;
+      padding: 40px;
+    }
+
+    &__title {
+      @extend %mohave-400;
+      color: var(--80-Grey, #2A2A2D);
+      font-size: 48px;
+      font-style: normal;
+    //   font-weight: 400;
+      line-height: 120%;
+      text-transform: uppercase;
+
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+      }
+    }
+
+    &__button {
+      width: 24px;
+      height: 24px;
+      border: none;
+      background: none;
+      background-image: url(../../images/close.svg);
+      cursor: pointer;
+
+      &-confirm {
+        &-container {
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+        }
+      }
+    }
+
+    &__name {
+      box-sizing: border-box;
+      border: 1px solid var(--60-Grey, #53545A);
+      background: var(--Secondary2, #E1DFD4);
+      padding: 16px;
+      @extend %cormorant-infant-500;
+      color: var(--40-Grey, #86878D);
+      font-size: 20px;
+      line-height: 150%;
+
+      &__label {
+        @extend %cormorant-infant-500;
+        color: var(--80-Grey, #2A2A2D);
+        font-size: 20px;
+        font-style: normal;
+        line-height: 150%;
+      }
+
+      &-container {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &__textarea {
+      box-sizing: border-box;
+      resize: none;
+      width: 855px;
+      height: 284px;
+      padding-top: 10px;
+      padding-left: 15px;
+      margin-top: 40px;
+      border: 1px solid var(--80-Grey, #2A2A2D);
+      background: var(--Secondary2, #E1DFD4);
+      @extend %cormorant-infant-500;
+      color: var(--40-Grey, #86878D);
+      font-size: 20px;
+      line-height: 150%;
+    }
+  }
+}

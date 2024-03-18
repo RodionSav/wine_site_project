@@ -53,10 +53,13 @@ export const ProductCartAction: React.FC<Props> = ({ product }) => {
         <div />
       </button>
       <button
-        className='product__button'
+        className={
+          classNames('product__button-adding',
+          {'product__button-adding_active': isCartProduct})
+        }
         onClick={() => handleAddCartProduct(product)}
       >
-        <img src={plusImg}/>
+        {/* <img src={plusImg}/> */}
       </button>
     </div>
   )

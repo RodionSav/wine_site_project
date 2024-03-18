@@ -19,6 +19,7 @@ export type Product = {
     description: string,
     pictureLink: string | null,
     pictureLink2: string | null,
+    quantity: number
 }
 
 export type ProductDetailsType = {
@@ -40,6 +41,14 @@ export type ProductDetailsType = {
   aroma: string;
   gastronomy: string;
   description: string;
-  picture: ArrayBuffer;
-  pictureLink: string;
+  pictureLink: string | null,
+  pictureLink2: string | null,
+  quantity: number
 };
+
+export type CommentType = {
+  wineId: number,
+  userFirstAndLastName: string,
+  message: string,
+  createdAt: Date,
+}

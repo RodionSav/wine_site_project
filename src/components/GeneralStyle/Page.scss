@@ -41,5 +41,9 @@
     text-transform: uppercase;
     @extend %mohave-400;
     cursor: pointer;
+
+    &_active {
+      background-color: #b12c2c;
+    }
   }
 }

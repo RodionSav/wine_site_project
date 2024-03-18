@@ -42,14 +42,10 @@ export const cartSlicer = createSlice({
       saveToLocalStorage(state);
     },
     decreaseQuantity: (state, action) => {
-      const foundItemIndex = state.items.findIndex(item => item.id === action.payload);
+      const foundItem = state.items.find(item => item.id === action.payload);
 
-      if (foundItemIndex !== -1) {
-        const foundItem = state.items[foundItemIndex];
+      if (foundItem && foundItem.quantity > 1) {
         foundItem.quantity -= 1;
-        if (foundItem.quantity === 0) {
-          state.items.splice(foundItemIndex, 1); // Удаление элемента из массива
-        }
       }
 
       saveToLocalStorage(state);

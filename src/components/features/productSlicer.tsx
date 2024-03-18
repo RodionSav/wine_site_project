@@ -1,52 +1,70 @@
-import { getProducts } from "../../api/products";
-import { Product } from "../../types/Product";
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
-
+import { getProducts, getSelectedProduct } from "../../api/products";
+import { Product, ProductDetailsType } from "../../types/Product";
 
 type ProductState = {
   items: Product[],
+  itemDetails: ProductDetailsType | null,
   loaded: boolean,
   hasError: string | null,
 };
 
 const productState: ProductState = {
   items: [],
+  itemDetails: null,
   loaded: true,
   hasError: null,
 };
 
-export const productsInit = createAsyncThunk('products/fetch', () => {
-  return getProducts();
-})
+export const productsInit = createAsyncThunk('products/fetch', async () => {
+  const products = await getProducts();
 
-const productsSlicer = createSlice({
+  const productsWithQuantity = products.map(product => ({ ...product, quantity: 1 }));
+
+
+  console.log(products);
+
+  return productsWithQuantity;
+});
+
+export const productDetailsInit = createAsyncThunk('productDetails/fetch', (productId: number) => {
+  return getSelectedProduct(productId);
+});
+
+const productsSlice = createSlice({
   name: 'products',
   initialState: productState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(productsInit.pending, (state) => {
-      return {
-        ...state,
-        loaded: true,
-      }
+      state.loaded = true;
     });
     builder.addCase(productsInit.fulfilled, (state, action) => {
-      return {
-        ...state,
-        items: action.payload,
-        loaded: false
-      }
+      state.items = action.payload.map(product => ({
+        ...product,
+        quantity: 1
+      }));
+      state.loaded = false;
     });
     builder.addCase(productsInit.rejected, (state) => {
-      return {
-        ...state,
-        loaded: false,
-        hasError: 'Error'
-      }
-    })
+      state.loaded = false;
+      state.hasError = 'Error';
+    });
+    builder.addCase(productDetailsInit.pending, (state) => {
+      state.loaded = true;
+    });
+    builder.addCase(productDetailsInit.fulfilled, (state, action) => {
+      state.itemDetails = {
+        ...action.payload,
+        quantity: 1
+      };
+      state.loaded = false;
+    });
+    builder.addCase(productDetailsInit.rejected, (state) => {
+      state.loaded = false;
+      state.hasError = 'Error';
+    });
   }
 });
 
-export default productsSlicer.reducer;
+export default productsSlice.reducer;

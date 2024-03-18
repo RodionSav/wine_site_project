@@ -44,7 +44,7 @@ export const ProductList = () => {
   useEffect(() => {
     dispatch(actions.productsInit());
 
-  }, [products])
+  }, [])
 
   return (
     <div className="product__list-container">
