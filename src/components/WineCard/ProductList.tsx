@@ -14,13 +14,14 @@ export const ProductList = () => {
   const { items: products } = useAppSelector(state => state.products);
   // const [products, setProducts] = useState(productsFromServer);
   // const [products, setProducts] = useState([]);
-  const [position, setPosition] = useState(1482);
+  const [position, setPosition] = useState(1640);
 
   const nextButtonHandle = () => {
     const distance = 296 + 32;
 
-    if (position === -1470) {
-      setPosition(1810);
+    if (position === -1640) {
+      setPosition(1968);
+      // setPosition(distance * ((products.length - 1) / 2))
     }
 
     setPosition((prevPosition) => prevPosition - distance)
@@ -32,8 +33,8 @@ export const ProductList = () => {
   const prevButtonHandle = () => {
     const distance = 296 + 32;
 
-    if (position === 1482) {
-      setPosition(-1798)
+    if (position === 1640) {
+      setPosition(-1968)
     }
 
     setPosition((prevPosition) => prevPosition + distance)

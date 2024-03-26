@@ -98,6 +98,11 @@
     display: block;
     text-decoration: none;
     color: black;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
 
     &_active {
       color: $active-color;
@@ -119,8 +124,41 @@
   }
 
   &__icon {
+    position: relative;
+    // top: 5px;
+    transition: transform 0.3s;
+    text-decoration: none;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &__amount {
+      position: relative;
+      bottom: 3px;
+      padding-top: 1px;
+      left: 8px;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      background-color: #871C1C;
+      @extend %mohave-500;
+      color: var(--Secondary-1, #F2F1E9);
+      font-size: 11px;
+      line-height: 120%; /* 13.2px */
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #F2F1E9;
+      text-decoration: none;
+      // padding-bottom: 10px;
+      // margin-left: 10px;
+
+    }
+
     &-plane {
-      width: 22px;
+      width: 21px;
       height: 18px;
       background-image: url(../../images/telegram.svg);
     }
@@ -131,8 +169,11 @@
       background-image: url(../../images/heart.svg);
 
       &-active {
-        margin-left: 4.5px;
-        margin-top: 6px;
+        // margin-left: 4.5px;
+        // margin-top: 6px;
+        position: relative;
+        top: 3px;
+        left: 2px;
         width: 24px;
         height: 24px;
         background-repeat: no-repeat;

@@ -10,6 +10,14 @@
     @extend %mohave-400;
     font-size: 48px;
     line-height: 57.6px;
+
+    &_none {
+      @extend %mohave-400;
+      color: var(--80-Grey, #2A2A2D);
+      font-size: 64px;
+      line-height: 120%; /* 76.8px */
+      text-transform: uppercase;
+    }
   }
 
   &-container {

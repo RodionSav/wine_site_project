@@ -1,9 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getReviews, createReview } from "../../api/products";
-import { CommentType } from "../../types/Product";
+import { CommentResponseType, CommentType } from "../../types/Product";
+
+
+type Comment = CommentType & CommentResponseType;
 
 type CommentState = {
-  items: CommentType[],
+  items: CommentResponseType[],
   loaded: boolean,
   hasError: string | null,
 };
@@ -14,11 +17,19 @@ const commentState: CommentState = {
   hasError: null,
 };
 
-export const commentsInit = createAsyncThunk<CommentType[], number>(
+export const commentsInit = createAsyncThunk<CommentResponseType[], number>(
   'comments/fetch',
   async (productId: number) => {
     const response = await getReviews(productId);
-    return response as unknown as CommentType[];
+    // Преобразование CommentType[] в CommentResponseType[]
+    return response.map((comment: { id: any; userFirstName: any; userLastName: any; message: any; rating: any; reviewDate: string }) => ({
+      id: comment.id,
+      userFirstName: comment.userFirstName,
+      userLastName: comment.userLastName,
+      message: comment.message,
+      rating: comment.rating,
+      reviewDate: comment.reviewDate,
+    }));
   }
 );
 
@@ -45,13 +56,23 @@ const commentsSlice = createSlice({
   initialState: commentState,
   reducers: {
     commentPush: (state, action: PayloadAction<CommentType>) => {
-      state.items.push(action.payload);
+      state.items.push(action.payload as CommentResponseType);
     }
   },
   extraReducers: (builder) => {
     builder.addCase(commentsInit.pending, (state) => {
       state.loaded = true;
     });
+    // builder.addCase(commentsInit.fulfilled, (state, action) => {
+    //   state.items = action.payload.map(comment => ({
+    //     ...comment,
+    //     id: 0,
+    //     userFirstName: '',
+    //     userLastName: '',
+    //     reviewDate: '',
+    //   }));
+    //   state.loaded = false;
+    // });
     builder.addCase(commentsInit.fulfilled, (state, action) => {
       state.items = action.payload;
       state.loaded = false;
@@ -64,7 +85,7 @@ const commentsSlice = createSlice({
       state.loaded = true;
     });
     builder.addCase(addComment.fulfilled, (state, action) => {
-      state.items.push(action.payload);
+      state.items.push(action.payload as CommentResponseType);
       state.loaded = false;
     });
     builder.addCase(addComment.rejected, (state) => {

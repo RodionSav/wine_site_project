@@ -3,7 +3,14 @@
 
 .product {
   &__card {
+    position: relative;
     width: 295px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+      // box-shadow: 3px 0px 0px rgba(0, 0, 0, 0.1); /* Горизонтальное смещение, вертикальное смещение, размытие, цвет */
+    }
   }
 
   &__list {
@@ -14,6 +21,7 @@
     gap: 32px;
     // margin: auto;
     margin-bottom: 128px;
+    height: 590px;
 
     &-container {
       display: flex;
@@ -42,6 +50,7 @@
     font-size: 24px;
     @extend %cormorant-infant-500;
     line-height: 150%;
+    // width: 200px;
 
     &-container {
       display: flex;
@@ -73,6 +82,8 @@
     line-height: 150%;
 
     &-container {
+      position: absolute;
+      right: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -102,6 +113,11 @@
       width: 24px;
       height: 24px;
       margin-top: 10px;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
 
       &_active {
         border: 0;
@@ -129,6 +145,11 @@
       width: 22px;
       height: 24px;
       margin-top: 5.5px;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
 
       &_active {
         border: 0;
@@ -229,6 +250,12 @@
         margin-left: 0;
         margin-bottom: 80px;
       }
+    }
+
+    &__link {
+      cursor: pointer;
+      text-decoration: none;
+      color: #151516;
     }
 
     &__span {
@@ -358,6 +385,11 @@
         background: none;
         border: none;
         cursor: pointer;
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
       }
 
       &-heart {
@@ -373,6 +405,11 @@
         background-repeat: no-repeat;
         background-image: url(../../images/heart.svg);
         transform: scale(1.5);
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: scale(1.8);
+        }
 
         &_active {
           position: relative;

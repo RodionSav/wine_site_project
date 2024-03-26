@@ -10,12 +10,19 @@ export const FavouritePage = () => {
 
   return (
     <div className="favourite">
-      <h1 className="favourite__title">Your favourites</h1>
+      {favouritesProducts.length > 0 ?
+      <>
+        <h1 className="favourite__title">Your favourites</h1>
+        <div className='favourite-container'>
+          {favouritesProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </>
+      :
       <div className='favourite-container'>
-        {favouritesProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+        <h1 className='favourite__title_none'>You have no favorites</h1>
+      </div>}
       <div className='story-course-container wine-course-container'>
           <img src='/images2/tastingRoom.jpg' className='wine-course-img' alt='tasting-room'/>
           <div className='story-course__link-container'>

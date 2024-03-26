@@ -1,16 +1,9 @@
 import './About.scss';
-import courseImg from '../../images/SomelierBANNER.svg';
-import mainImg from '../../images/back-about-img.svg';
-import aboutImg1 from '../../images/about-img-1.svg';
-import aboutImg2 from '../../images/about-img-2.svg';
-import aboutImg3 from '../../images/about-img-3.svg';
-import aboutImg4 from '../../images/about-img-4.svg';
+import '../GeneralStyle/Page.scss';
 import '../../components/ContactPage/Contact.scss';
 import map from '../../images/map.svg';
 import { ProductCard } from '../WineCard/ProductCard';
 import { ProductList } from '../WineCard/ProductList';
-// import videoFile from '../../images/video/pexels.mp4';
-// import videoFile from '../../../public/video/pexels.mp4';
 import arrowImg from '../../images/arrow.svg';
 
 export const AboutPage = () => {

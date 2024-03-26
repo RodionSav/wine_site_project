@@ -1,8 +1,10 @@
 import './commentForm.scss';
 import '../GeneralStyle/Page.scss';
 import { useState } from 'react';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as actions from '../features/commentSlicer';
+import StarRating from '../Rating/StarRating';
+import { useParams } from 'react-router-dom';
 
 type Props = {
   isActive: boolean,
@@ -14,6 +16,12 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
   const handleIsActive = () => {
     setIsActive(!isActive);
   }
+
+  const {productId} = useParams();
+
+  const comments = useAppSelector(state => state.comments.items);
+
+  const [rating, setRating] = useState(0);
 
   const dispatch = useAppDispatch();
 
@@ -29,30 +37,29 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
     setMessage(event.target.value);
   }
 
-  const generateUniqueId = (): string => {
-    const timestamp = Date.now().toString(16);
-    const randomNumber = Math.random().toString(16).slice(2);
-    return `${timestamp}-${randomNumber}`;
-  };
-
   const handleSubmitForm = () => {
     const newComment = {
-      wineId: Number(generateUniqueId()),
+      wineId: Number(productId),
       userFirstAndLastName: name,
       message: message,
-      createdAt: new Date(),
+      rating: rating,
     };
 
-    // dispatch(actions.addComment(newComment)); эта часть кода для добавления комментария на базу данных
-
     if (name.trim() && message.trim()) {
-      dispatch(actions.commentPush(newComment)); // эта часть кода для добавления комментария на сайт но не на базу данных
+      dispatch(actions.addComment(newComment));
+
+      setIsActive(!isActive);
+
     }
+    console.log(comments);
 
 
     setName('');
     setMessage('');
+
   };
+
+  const isActiveButton = !name.trim() || !message.trim();
 
   return (
     <div className='comment__form'>
@@ -69,7 +76,7 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
             <label className='comment__form__name__label'>Enter Your Name</label>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Name Surname"
               className='comment__form__name'
               value={name}
               onChange={handleNameUpdate}
@@ -77,6 +84,16 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
             ></input>
           </div>
           <div>
+            <div className="comment__form__stars">
+              <StarRating
+                totalStars={5}
+                editable={true}
+                rating={rating}
+                setRating={setRating}
+                // averageRating={}
+              />
+            </div>
+            
             <textarea
               className='comment__form__textarea'
               placeholder="Your Review"
@@ -84,12 +101,14 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
               onChange={handleMessageUpdate}
               required
               // onChange={handleMessageUpdate}
-            ></textarea>
+            >
+            </textarea>
           </div>
           <div className='comment__form__button-confirm-container'>
             <button
               className='page__button comment__form__button-confirm'
               onClick={handleSubmitForm}
+              disabled={isActiveButton}
             >
               Confirm
             </button>

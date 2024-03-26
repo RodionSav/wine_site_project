@@ -320,16 +320,15 @@
       left: 0;
       height:480px;
       width: 100vw;
-      object-fit: cover; /* Центральная часть видео будет отображаться без обрезания */
-      
+      object-fit: cover;
     }
 
     &-container {
       position: relative;
-      width: 100vw; /* Ширина контейнера будет равна ширине окна просмотра */
-      height: 480px; /* Высота контейнера 480px */
+      width: 100vw;
+      height: 480px;
       // overflow: hidden;
-      margin-left: calc((98.4% - 100vw) / 2);
+      margin-left: calc((98.3% - 100vw) / 2);
       // object-fit: cover; /* Центральная часть видео будет отображаться без обрезания */
 
     }

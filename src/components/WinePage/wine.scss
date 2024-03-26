@@ -32,6 +32,10 @@
     flex-wrap: wrap;
     gap: 32px;
     width: 1280px;
+
+    &-second {
+      margin-bottom: 80px;
+    }
   }
 
   &-course {

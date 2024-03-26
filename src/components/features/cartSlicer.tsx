@@ -1,21 +1,51 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Product } from "../../types/Product";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Order, OrderType, Product } from "../../types/Product";
+import { createOrder, getOrders, getSelectedOrder } from "../../api/products";
 
 const storedCart = localStorage.getItem('productCart');
+const storedCartItem = localStorage.getItem('productCartItem');
 
-type CartItem = Product & { quantity: number };
+// type CartItem = Product & { quantity: number };
+export type CartItem = {
+  [x: string]: number;
+  wineId: number,
+  quantity: number
+}
 
 type CartState = {
-  items: CartItem[],
+  items: Product[],
+  itemsCart: CartItem[],
+  orderItems: Order[],
+  orderSeletedItem: Order | null,
+  loaded: boolean,
+  hasError: string | null
 };
 
 const cartState: CartState = {
   items: storedCart ? JSON.parse(storedCart) : [],
+  itemsCart: storedCartItem ? JSON.parse(storedCartItem) : [],
+  orderItems: [],
+  orderSeletedItem: null,
+  loaded: true,
+  hasError: null
 };
 
 const saveToLocalStorage = (state: CartState) => {
   localStorage.setItem('productCart', JSON.stringify(state.items));
+  localStorage.setItem('productCartItem', JSON.stringify(state.itemsCart));
 };
+
+export const cartOrdersInit = createAsyncThunk<OrderType, OrderType>('cart/fetch', (newOrder) => {
+  return createOrder(newOrder)
+});
+
+export const cartOrdersGetInit = createAsyncThunk('cartGet/fetch', () => {
+  return getOrders();
+});
+
+export const cartSelectedOrderInit = createAsyncThunk('getSelectedCart', (orderId: number) => {
+  return getSelectedOrder(orderId)
+})
 
 export const cartSlicer = createSlice({
   name: 'cart',
@@ -24,12 +54,33 @@ export const cartSlicer = createSlice({
     setCartProducts: (state, action) => {
       state.items.push({
         ...action.payload,
-        quantity: 1
+        wineId: action.payload.id,
+        // quantity: 1
       });
+
+      const { quantity, id } = action.payload;
+
+      state.itemsCart.push({
+        wineId: id,
+        quantity: quantity
+      });
+
       saveToLocalStorage(state);
+
+      // console.log(storedCart);
+      console.log(storedCartItem);
     },
+    // setCartProducts: (state, action) => {
+    //   const { quantity, id } = action.payload; // Деструктурируем необходимые свойства
+    //   state.items.push({
+    //     id: id,
+    //     quantity: quantity,
+    //   });
+    //   saveToLocalStorage(state);
+    // },
     deleteCartProducts: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload);
+      state.itemsCart = state.itemsCart.filter(item => item.wineId !== action.payload);
       saveToLocalStorage(state);
     },
     increaseQuantity: (state, action) => {
@@ -50,6 +101,30 @@ export const cartSlicer = createSlice({
 
       saveToLocalStorage(state);
     }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(cartOrdersGetInit.pending, (state) => {
+      state.loaded = true;
+    });
+    builder.addCase(cartOrdersGetInit.fulfilled, (state, action) => {
+      state.orderItems = action.payload;
+      state.loaded = false;
+    });
+    builder.addCase(cartOrdersGetInit.rejected, (state) => {
+      state.loaded = false;
+      state.hasError = 'Error';
+    });
+    builder.addCase(cartSelectedOrderInit.pending, (state) => {
+      state.loaded = true;
+    });
+    builder.addCase(cartSelectedOrderInit.fulfilled, (state, action) => {
+      state.orderSeletedItem = action.payload;
+      state.loaded = false;
+    });
+    builder.addCase(cartSelectedOrderInit.rejected, (state) => {
+      state.loaded = false;
+      state.hasError = 'Error';
+    });
   }
 });
 

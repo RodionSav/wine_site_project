@@ -10,6 +10,8 @@ import { ProductDetails } from "./WineCard/ProductDetails";
 import { ScrollToTop } from "./ScrollToTop/ScrollToTop";
 import { FavouritePage } from "./FavouritePage/FavouritePage";
 import { CartPage } from "./CartPage/CartPage";
+import { QuestionPage } from "./QuestionPage/QuestionPage";
+import { PageNotFound } from "./ErrorPage/PageNotFound";
 
 export const Root = () => {
   return (
@@ -17,8 +19,11 @@ export const Root = () => {
       <ScrollToTop />
       <Provider store={store}>
         <Routes>
+          <Route index element={<QuestionPage />} />
           <Route path="/" element={<App />}>
-            <Route index element={<AboutPage />} />
+              <Route path="*" element={<PageNotFound />} />
+
+            <Route index path="/about" element={<AboutPage />} />
             <Route path="/products">
               <Route index element={<WinePage />} />
               <Route path=":productId" element={<ProductDetails />} />
@@ -28,6 +33,7 @@ export const Root = () => {
             <Route path="/favourites" element={<FavouritePage />} />
             <Route path="/cart" element={<CartPage />} />
           </Route>
+
         </Routes>
       </Provider>
     </HashRouter>

@@ -9,7 +9,7 @@ import minusImg from '../../images/minusImg.svg';
 import { useEffect, useMemo, useState } from 'react';
 import cn from 'classnames';
 import { ProductList } from './ProductList';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { getSelectedProduct } from '../../api/products';
 import { Product, ProductDetailsType } from '../../types/Product';
 import { ProductCardDetailsAction } from '../buttonActions/ProductCardDetailsAction';
@@ -18,6 +18,7 @@ import * as productsActions from '../features/productSlicer';
 import * as commentsActions from '../features/commentSlicer';
 import { AddingCommentForm } from '../buttonActions/addingComment';
 import { Review } from './Review';
+import { StarRatingWithoutEdit } from '../Rating/StarRatingWithoutEdir';
 
 export const ProductDetails = () => {
   const [toggle, setToggle] = useState(true);
@@ -43,11 +44,16 @@ export const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(commentsActions.commentsInit(Number(productId)));
-  })
+
+    console.log(currentProduct)
+
+  }, [])
 
   useEffect(() => {
     dispatch(productsActions.productDetailsInit(Number(productId)));
-  }, [currentProduct])
+
+    console.log(currentProduct)
+  }, [])
 
   // useEffect(() => {
   //   if (productId) {
@@ -88,7 +94,11 @@ export const ProductDetails = () => {
             <span className='product-details__span'>Stoic Winery</span>
           </li>
           <li className='product-details__item'>
-            <span className='product-details__span'>Wine</span>
+            <span className='product-details__span'>
+              <NavLink to='/products' className="product-details__link">
+                Wine
+              </NavLink>
+            </span>
           </li>
           <li className='product-details__item'>
             <span className='product-details__span'>{currentProduct?.name}</span>
@@ -107,18 +117,21 @@ export const ProductDetails = () => {
             <div className='product-details__grade__main-container'>
               <div>
                 <div className='product-details__grade-container'>
-                  <h2 className='product-details__grade'>3.9</h2>
-                  <h2 className='product-details__grade'>{currentProduct?.averageRatingScore}</h2>
+                  {/* <h2 className='product-details__grade'>3.9</h2> */}
+                  <h2 className='product-details__grade'>
+                    {currentProduct?.averageRatingScore
+                     ?
+                  currentProduct?.averageRatingScore : 0
+                    }
+                  </h2>
                   <div className='product-details__star-container'>
-                    <img src={starImg} />
-                    <img src={starImg} />
-                    <img src={starImg} />
-                    <img src={starImg} />
-                    <img src={starImg} />
+                    <StarRatingWithoutEdit
+                      rating={currentProduct?.averageRatingScore}
+                    />
                   </div>
                 </div>
                 <div className='product-details__review-container'>
-                  <h2 className='product-details__grade'>2</h2>
+                  <h2 className='product-details__grade'>{comments.length}</h2>
                   <button
                     className='product-details__button-add-review'
                     onClick={handleAddReview}
@@ -188,7 +201,7 @@ export const ProductDetails = () => {
         <div className='product-details__menu__paragraph'>
           {toggle && <p>{currentProduct?.description}</p>}
           {!toggle && comments.length > 0 && comments.map((comment) => (
-            <Review comment={comment} />
+            <Review key={comment.id} comment={comment} />
           ))}
           {!toggle && comments.length === 0 && noComments}
         </div>

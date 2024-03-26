@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getProducts, getSelectedProduct } from "../../api/products";
-import { Product, ProductDetailsType } from "../../types/Product";
+import { OrderType, Product, ProductDetailsType } from "../../types/Product";
 
 type ProductState = {
   items: Product[],
@@ -21,7 +21,6 @@ export const productsInit = createAsyncThunk('products/fetch', async () => {
 
   const productsWithQuantity = products.map(product => ({ ...product, quantity: 1 }));
 
-
   console.log(products);
 
   return productsWithQuantity;
@@ -34,7 +33,18 @@ export const productDetailsInit = createAsyncThunk('productDetails/fetch', (prod
 const productsSlice = createSlice({
   name: 'products',
   initialState: productState,
-  reducers: {},
+  reducers: {
+    increaseProductQuantity (state) {
+      if (state.itemDetails) {
+        state.itemDetails.quantity += 1;
+      }
+    },
+    decreaseProductQuantity (state) {
+      if (state.itemDetails && state.itemDetails.quantity > 1) {
+        state.itemDetails.quantity -= 1
+      }
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(productsInit.pending, (state) => {
       state.loaded = true;
@@ -66,5 +76,7 @@ const productsSlice = createSlice({
     });
   }
 });
+
+export const { increaseProductQuantity, decreaseProductQuantity } = productsSlice.actions;
 
 export default productsSlice.reducer;

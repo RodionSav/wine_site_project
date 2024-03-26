@@ -45,6 +45,11 @@
     display: block;
     text-decoration: none;
     color: black;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2)
+    }
 
     &_active {
       color: $active-color;

@@ -42,6 +42,10 @@
     @extend %mohave-400;
     cursor: pointer;
 
+    &:hover {
+      background-color: #b13c27;
+    }
+
     &_active {
       background-color: #b12c2c;
     }

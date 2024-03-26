@@ -186,6 +186,10 @@ export const WinePage = () => {
     // console.log(colorParams)
   // })
 
+  const isSortingEnabled = () => {
+    return color !== 'No sorting' || type !== 'No sorting' || age !== 'No sorting' || taste !== SortTypeTaste.NoSorting;
+  }
+
   return (
     <div className="wine">
       <h1 className="wine__title">EXPLORE OUR COLLECTION</h1>
@@ -217,31 +221,30 @@ export const WinePage = () => {
             setSelectedOption={handleTasteChange}
           />
         </div>
-        <div className="wine-container">
-          {sortedProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-        <div className='story-course-container wine-course-container'>
-          <img src='/images2/tastingRoom.jpg' className='wine-course-img' alt={courseImg}/>
-          <div className='story-course__link-container'>
-            <h1 className='story-course__title'>Tasting room</h1>
-            <a>
-              <img src={arrowImg} className='story-course-img' />
-            </a>
-            <p className='story-course__paragraph'>Experience our Wines</p>
-          </div>
-        </div>
-        {/* <div className="wine-container">
-          {sortedProducts.slice(8, 14).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div> */}
-        <div className='story-course-container'>
-          {/* <img src={courseImg} className='story-course' alt={courseImg}/> */}
+        {!isSortingEnabled() ? (
+          <div>
+            <div className="wine-container">
+              {sortedProducts.slice(0, 8).map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+            <div className='story-course-container wine-course-container'>
+              <img src='/images2/tastingRoom.jpg' className='wine-course-img' alt={courseImg}/>
+              <div className='story-course__link-container'>
+                <h1 className='story-course__title'>Tasting room</h1>
+                <a>
+                  <img src={arrowImg} className='story-course-img' />
+               </a>
+                <p className='story-course__paragraph'>Experience our Wines</p>
+              </div>
+            </div>
+            <div className="wine-container wine-container-second">
+              {sortedProducts.slice(9).map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+            <div className='story-course-container'>
           <video src='/video/pexels.mp4' autoPlay muted loop className='story-course-video' />
-          {/* <iframe src={videoFile} frameBorder="0" allowFullScreen></iframe> */}
-          {/* <div className='story-course-video-back'/> */}
           <div className='story-course__link-container'>
             <h1 className='story-course__title'>Sommelier course</h1>
             <a>
@@ -250,6 +253,15 @@ export const WinePage = () => {
             <p className='story-course__paragraph'>Join our passionate wine community</p>
           </div>
         </div>
+
+          </div>
+        ) : (
+          <div className="wine-container">
+            {sortedProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

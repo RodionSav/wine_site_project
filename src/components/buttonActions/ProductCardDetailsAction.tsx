@@ -6,6 +6,7 @@ import { Product } from '../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as favouriteActions from '../features/favouriteSlicer';
 import * as cartActions from '../features/cartSlicer';
+import * as productActions from '../features/productSlicer';
 import classNames from 'classnames';
 
 
@@ -50,10 +51,13 @@ export const ProductCardDetailsAction: React.FC<Props> = ({ product }) => {
 
   const handleAddProductQuantity = (newProduct: Product) => {
     dispatch(cartActions.increaseQuantity(newProduct.id));
+    dispatch(productActions.increaseProductQuantity())
+    console.log(product);
   }
 
   const handleDecreaseProductQuantity = (newProduct: Product) => {
     dispatch(cartActions.decreaseQuantity(newProduct.id));
+    dispatch(productActions.decreaseProductQuantity())
   }
 
 

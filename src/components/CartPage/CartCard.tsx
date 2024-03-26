@@ -3,9 +3,10 @@ import plusImg from '../../images/plusImg.svg';
 import minusImg from '../../images/minusImg.svg';
 import { useAppDispatch } from "../../app/hooks";
 import * as cartActions from '../features/cartSlicer';
+import { CartItem } from "../features/cartSlicer";
 
 type Props = {
-  product: Product & { quantity: number };
+  product: Product;
 }
 
 export const CartCard: React.FC<Props> = ({ product }) => {

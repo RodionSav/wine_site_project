@@ -1,23 +1,26 @@
 import './review.scss';
-import { CommentType } from "../../types/Product"
+import { CommentResponseType, CommentType } from "../../types/Product"
+import { StarRatingWithoutEdit } from '../Rating/StarRatingWithoutEdir';
 
 type Props = {
-  comment: CommentType
-  & {createdAt: string};
+  comment: CommentResponseType
 }
 
 export const Review: React.FC<Props> = ({ comment }) => {
-  const day = comment.createdAt.getDate();
-  const month = comment.createdAt.getMonth() + 1;
-  const year = comment.createdAt.getFullYear();
 
   return (
     <div className="review">
       <div className='review-container'>
-        <h1 className="review__title">{comment.userFirstAndLastName}</h1>
+        <h1 className="review__title">{comment.userFirstName + ' ' + comment.userLastName}</h1>
         <p className='review__paragraph'>{comment.message}</p>
       </div>
-      <span className='review__time'>{`${day}/${month}/${year}`}</span>
+      <div className='review__time-container'>
+        <p className='review__time'>{comment.reviewDate}</p>
+
+      </div>
+      <div className='review__stars-container'>
+        <StarRatingWithoutEdit rating={comment.rating} />
+      </div>
     </div>
   )
 }
