@@ -8,15 +8,15 @@ import { ProductCartAction } from '../buttonActions/ProductCardAction';
 
 type ProductType = {
   product: Product;
+  setIsActive?: (isActive: boolean) => void;
 }
 
 export const ProductCard
 : React.FC<ProductType>
 = ({
-  product
+  product,
+  setIsActive
 }) => {
-  const [productWithImage, setProductWithImage] = useState(null);
-
 
   const productWineColorFormat = product?.wineColor?.at(0) + product?.wineColor?.slice(1).toLowerCase();
   const productWineTypeFormat = product?.wineType?.at(0) + product?.wineType?.slice(1).toLowerCase();
@@ -30,7 +30,10 @@ export const ProductCard
 
   return (
     <div className='product__card'>
-      <NavLink to={`/products/${product.id}`}>
+      <NavLink
+        to={`/products/${product.id}`}
+        onClick={() => setIsActive && setIsActive(false)}
+      >
         {/* <img src={productWithImage} /> */}
         <img src={`http://localhost:8080/${product.pictureLink2}`} className='product-img'/>
         {/* <img src={wineImg} /> */}

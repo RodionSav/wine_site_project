@@ -1,17 +1,10 @@
-import productDetailsImg from '../../images/productDetailsImg.svg';
 import './product.scss';
-import starImg from '../../images/star.svg';
 import penImg from '../../images/pen.svg';
-import heartImg from '../../images/heart.svg';
 import '../../components/GeneralStyle/Page.scss';
-import plusImg from '../../images/plusImg.svg';
-import minusImg from '../../images/minusImg.svg';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { ProductList } from './ProductList';
 import { NavLink, useParams } from 'react-router-dom';
-import { getSelectedProduct } from '../../api/products';
-import { Product, ProductDetailsType } from '../../types/Product';
 import { ProductCardDetailsAction } from '../buttonActions/ProductCardDetailsAction';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as productsActions from '../features/productSlicer';
@@ -19,11 +12,12 @@ import * as commentsActions from '../features/commentSlicer';
 import { AddingCommentForm } from '../buttonActions/addingComment';
 import { Review } from './Review';
 import { StarRatingWithoutEdit } from '../Rating/StarRatingWithoutEdir';
+import { AddToCart } from '../CartPage/AddToCart';
 
 export const ProductDetails = () => {
   const [toggle, setToggle] = useState(true);
 
-  // const [selectedProduct, setSelectedProduct] = useState<ProductDetailsType | null>(null);
+  const [isActiveCart, setIsActiveCart] = useState(false);
 
   const {productId} = useParams();
 
@@ -38,10 +32,6 @@ export const ProductDetails = () => {
 
   const [isActive, setIsActive] = useState(false);
 
-  // const currentProduct = useMemo(() => {
-  //   return products.find((product: Product) => product.id === Number(productId))
-  // }, [productId, products]);
-
   useEffect(() => {
     dispatch(commentsActions.commentsInit(Number(productId)));
 
@@ -54,15 +44,6 @@ export const ProductDetails = () => {
 
     console.log(currentProduct)
   }, [])
-
-  // useEffect(() => {
-  //   if (productId) {
-  //     getSelectedProduct(Number(productId))
-  //       .then((response) => {
-  //         setSelectedProduct(JSON.parse(JSON.stringify(response)))
-  //       })
-  //   }
-  // }, [productId]);
 
   const capitalizeDescription = (caption: string) => {
     return caption.charAt(0).toUpperCase() + caption.slice(1);
@@ -87,6 +68,10 @@ export const ProductDetails = () => {
         setIsActive={setIsActive}
       />
     }
+    {isActiveCart &&
+    <AddToCart
+      setIsActive={setIsActiveCart}
+    />}
     <div className='product-details'>
       <div className="product-details-container">
         <ul className='product-details__list'>
@@ -178,7 +163,10 @@ export const ProductDetails = () => {
                 <h1 className='product-details__key'>Gastronomy:</h1>
                 <h2 className='product-details__value'>{gastronomy}</h2>
               </div>
-              <ProductCardDetailsAction product={currentProduct} />
+              <ProductCardDetailsAction
+                product={currentProduct}
+                setIsActive={setIsActiveCart}
+              />
             </div>
           </div>
         </div>

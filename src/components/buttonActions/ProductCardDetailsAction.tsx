@@ -8,13 +8,18 @@ import * as favouriteActions from '../features/favouriteSlicer';
 import * as cartActions from '../features/cartSlicer';
 import * as productActions from '../features/productSlicer';
 import classNames from 'classnames';
+import { useState } from 'react';
 
 
 type Props = {
-  product: Product | null;
+  product: Product | null,
+  setIsActive: (active: boolean) => void;
 }
 
-export const ProductCardDetailsAction: React.FC<Props> = ({ product }) => {
+export const ProductCardDetailsAction: React.FC<Props> = ({
+  product,
+  setIsActive
+}) => {
 
   const dispatch = useAppDispatch();
 
@@ -22,7 +27,7 @@ export const ProductCardDetailsAction: React.FC<Props> = ({ product }) => {
   const cartProducts = useAppSelector(state => state.cart.items);
 
   if (!product) {
-    return null; // или вернуть заглушку или ничего не возвращать
+    return null;
   }
 
   const isFavourite = favouriteProducts.some(
@@ -46,7 +51,13 @@ export const ProductCardDetailsAction: React.FC<Props> = ({ product }) => {
       dispatch(cartActions.deleteCartProducts(newProduct.id));
     } else {
       dispatch(cartActions.setCartProducts(newProduct));
+      setIsActive(true);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
+
   };
 
   const handleAddProductQuantity = (newProduct: Product) => {

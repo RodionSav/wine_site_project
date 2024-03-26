@@ -93,7 +93,6 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
                 // averageRating={}
               />
             </div>
-            
             <textarea
               className='comment__form__textarea'
               placeholder="Your Review"

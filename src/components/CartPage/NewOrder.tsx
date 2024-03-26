@@ -27,7 +27,7 @@ export const NewOrder: React.FC<Props> = ({ isActive, setIsActive }) => {
     acc + (product.price * product.quantity)
   ), 0);
 
-  const orderNumber = newOrderCode?.orderNumber || ''; // Здесь вы можете заменить это на фактический номер заказа из вашей логики
+  const orderNumber = newOrderCode?.orderNumber || '';
 
   const handleCloseForm = () => {
     setIsActive(!isActive);
@@ -45,8 +45,6 @@ export const NewOrder: React.FC<Props> = ({ isActive, setIsActive }) => {
     navigator.clipboard.writeText(orderNumber);
     alert("Successfully copied!");
   }
-
-  
 
   return (
     <div className="order" style={{ overflowY: 'auto' }}>

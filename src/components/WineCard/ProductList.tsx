@@ -9,7 +9,13 @@ import productsFromServer from '../../api/productsFromServer.json';
 import buttonImg from '../../images/button-arrow.svg';
 import { Product } from "../../types/Product";
 
-export const ProductList = () => {
+type Props = {
+  setIsActive?: (isActive: boolean) => void;
+}
+
+export const ProductList: React.FC<Props> = ({
+  setIsActive
+}) => {
   const dispatch = useAppDispatch();
   const { items: products } = useAppSelector(state => state.products);
   // const [products, setProducts] = useState(productsFromServer);
@@ -45,7 +51,8 @@ export const ProductList = () => {
   useEffect(() => {
     dispatch(actions.productsInit());
 
-  }, [])
+  }, []);
+
 
   return (
     <div className="product__list-container">
@@ -71,6 +78,7 @@ export const ProductList = () => {
           >
             <ProductCard
               product={product}
+              setIsActive={setIsActive}
             />
           </li>
         ))}

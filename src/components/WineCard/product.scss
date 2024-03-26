@@ -21,7 +21,7 @@
     gap: 32px;
     // margin: auto;
     margin-bottom: 128px;
-    height: 590px;
+    height: 600px;
 
     &-container {
       display: flex;
@@ -365,6 +365,11 @@
       height: 24px;
       font-size: 24px;
       cursor: pointer;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
 
       &-minus {
         margin-bottom: 15px;
