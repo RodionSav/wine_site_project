@@ -183,7 +183,7 @@
   }
 
   &__paragraph {
-    position: relative;
+    // position: relative;
     z-index: 10;
     @extend %cormorant-infant-500;
     font-size: 20px;
@@ -201,8 +201,8 @@
         text-transform: uppercase;
         opacity: 50%;
         z-index: -1;
-        bottom: 10px;
-        // bottom: 240px;
+        // bottom: 100px;
+        bottom: 240px;
       }
     }
 
@@ -219,8 +219,8 @@
         line-height: 120%;
         text-transform: uppercase;
         opacity: 50%;
-        // bottom: 350px;
-        top: -110px;
+        bottom: 350px;
+        // top: -110px;
         right: 290px;
         z-index: -1;
       }
@@ -248,9 +248,9 @@
         text-transform: uppercase;
         opacity: 50%;
         left: 30px;
-        // bottom: 250px;
+        bottom: 250px;
         // bottom: 100px;
-        top: -110px;
+        // top: -110px;
         z-index: -1;
       }
     }
@@ -270,8 +270,8 @@
         opacity: 50%;
         // left: 30px;
         right: 300px;
-        // bottom: 280px;
-        top: -110px;
+        bottom: 280px;
+        // top: -110px;
         z-index: -1;
       }
 
