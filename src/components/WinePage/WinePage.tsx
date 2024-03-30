@@ -1,8 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { DropDown, OptionsType } from "../DropDown/DropDown";
 import { ProductCard } from "../WineCard/ProductCard"
-import { ProductDetails } from "../WineCard/ProductDetails"
-import { ProductList } from "../WineCard/ProductList";
 import './wine.scss';
 import arrowImg from '../../images/arrow.svg';
 import '../AboutPage/About.scss';
@@ -12,7 +10,7 @@ import * as actions from '../features/productSlicer';
 import { Product } from "../../types/Product";
 import { SortTypeAge, SortTypeByType, SortTypeColor, SortTypeTaste } from "../../Enums/SortType";
 import { useSearchParams } from "react-router-dom";
-import { getSearchWith } from "../../getSerchWith/getSearchWith";
+import { UpperLoader } from "../Loader/UpperLoader";
 
 const colors = [
   { text: 'No sorting' },
@@ -49,7 +47,7 @@ export const WinePage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
-  const { items: products } = useAppSelector(state => state.products);
+  const { items: products, loaded: loading } = useAppSelector(state => state.products);
 
   const colorParams = searchParams.get('color') || 'No sorting';
   const typeParams = searchParams.get('type') || 'No sorting';
@@ -59,14 +57,6 @@ export const WinePage = () => {
   const [age, setAge] = useState<string>(ageParams);
   const [taste, setTaste] = useState<string>(SortTypeTaste.NoSorting);
 
-  // const handleColorChange = (selectedColor: OptionsType) => {
-  //   setSearchParams(getSearchWith(
-  //     searchParams,
-  //     { color: selectedColor.text }
-  //   ));
-  //   setColor(selectedColor.text)
-  // }
-
   const handleColorChange = (selectedColor: OptionsType) => {
     const updatedParams = new URLSearchParams(searchParams.toString());
     updatedParams.set('color', selectedColor.text);
@@ -74,30 +64,12 @@ export const WinePage = () => {
     setColor(selectedColor.text);
   }
 
-
-  // const handleTypeChange = (selectedType: OptionsType) => {
-  //   setSearchParams(getSearchWith(
-  //     searchParams,
-  //     { type: selectedType.text }
-  //   ));
-  //   setType(selectedType.text)
-  // }
-
   const handleTypeChange = (selectedType: OptionsType) => {
     const updatedParams = new URLSearchParams(searchParams.toString());
     updatedParams.set('type', selectedType.text);
     setSearchParams(updatedParams);
     setType(selectedType.text);
   }
-
-
-  // const handleAgeChange = (selectedAge: OptionsType) => {
-  //   setSearchParams(getSearchWith(
-  //     searchParams,
-  //     { age: selectedAge.text }
-  //   ));
-  //   setAge(selectedAge.text)
-  // }
 
   const handleAgeChange = (selectedAge: OptionsType) => {
     const updatedParams = new URLSearchParams(searchParams.toString());
@@ -112,7 +84,6 @@ export const WinePage = () => {
     setSearchParams(updatedParams);
     setTaste(selectedTaste.text);
   }
-
 
   useEffect(() => {
     dispatch(actions.productsInit());
@@ -178,14 +149,6 @@ export const WinePage = () => {
     products
   )
 
-  // useEffect(() => {
-  //   console.log(sortedProducts)
-  // },[sortedProducts])
-  // useEffect(() => {
-    // console.log(color);
-    // console.log(colorParams)
-  // })
-
   const isSortingEnabled = () => {
     return color !== 'No sorting' || type !== 'No sorting' || age !== 'No sorting' || taste !== SortTypeTaste.NoSorting;
   }
@@ -222,28 +185,31 @@ export const WinePage = () => {
           />
         </div>
         {!isSortingEnabled() ? (
-          <div>
-            <div className="wine-container">
-              {sortedProducts.slice(0, 8).map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-            <div className='story-course-container wine-course-container'>
-              <img src='/images2/tastingRoom.jpg' className='wine-course-img' alt={courseImg}/>
-              <div className='story-course__link-container'>
-                <h1 className='story-course__title'>Tasting room</h1>
-                <a>
-                  <img src={arrowImg} className='story-course-img' />
-               </a>
-                <p className='story-course__paragraph'>Experience our Wines</p>
-              </div>
-            </div>
-            <div className="wine-container wine-container-second">
-              {sortedProducts.slice(9).map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-            <div className='story-course-container'>
+        <div>
+          {/* <UpperLoader /> */}
+          {loading && <UpperLoader />}
+          {!loading && <div className="wine-container">
+            {sortedProducts.slice(0, 8).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </div>}
+        <div className='story-course-container wine-course-container'>
+          <img src='/images2/tastingRoom.jpg' className='wine-course-img' alt={courseImg}/>
+          <div className='story-course__link-container'>
+            <h1 className='story-course__title'>Tasting room</h1>
+            <a>
+              <img src={arrowImg} className='story-course-img' />
+            </a>
+            <p className='story-course__paragraph'>Experience our Wines</p>
+          </div>
+        </div>
+        {!loading &&
+        <div className="wine-container wine-container-second">
+          {sortedProducts.slice(9).map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>}
+        <div className='story-course-container'>
           <video src='/video/pexels.mp4' autoPlay muted loop className='story-course-video' />
           <div className='story-course__link-container'>
             <h1 className='story-course__title'>Sommelier course</h1>
@@ -253,13 +219,13 @@ export const WinePage = () => {
             <p className='story-course__paragraph'>Join our passionate wine community</p>
           </div>
         </div>
-
-          </div>
+        </div>
         ) : (
           <div className="wine-container">
-            {sortedProducts.map((product) => (
+            {!loading && sortedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
+            {!sortedProducts.length && <h1 className="wine__title">There are no results by your request</h1>}
           </div>
         )}
       </div>

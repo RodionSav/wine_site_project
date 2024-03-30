@@ -1,61 +1,64 @@
+import React from 'react';
 import { Product } from "../../types/Product";
 import plusImg from '../../images/plusImg.svg';
 import minusImg from '../../images/minusImg.svg';
 import { useAppDispatch } from "../../app/hooks";
 import * as cartActions from '../features/cartSlicer';
-import { CartItem } from "../features/cartSlicer";
 
 type Props = {
   product: Product;
 }
 
-export const CartCard: React.FC<Props> = ({ product }) => {
+export const CartCard: React.FC<Props> = React.memo(({ product }) => {
   const dispatch = useAppDispatch();
 
-  const handleAddCartProduct = (newProduct: Product) => {
-    dispatch(cartActions.deleteCartProducts(newProduct.id));
+  const handleAddCartProduct = () => {
+    dispatch(cartActions.deleteCartProducts(product.id));
   }
 
-  const handleAddProductQuantity = (newProduct: Product) => {
-    dispatch(cartActions.increaseQuantity(newProduct.id));
+  const handleAddProductQuantity = () => {
+    dispatch(cartActions.increaseQuantity(product.id));
   }
 
-  const handleDeleteProductQuantity = (newProduct: Product) => {
-    dispatch(cartActions.decreaseQuantity(newProduct.id));
+  const handleDeleteProductQuantity = () => {
+    dispatch(cartActions.decreaseQuantity(product.id));
   }
 
   return (
     <div className="cart__card">
       <div className="cart__card-img-container">
-        <img src={`http://localhost:8080/${product.pictureLink}`} className="cart__card-img"/>
+        <img src={`https://wine-stere-educated-tray-production.up.railway.app/${product.pictureLink}`} className="cart__card-img" alt={product.name} />
+        {/* <img src={`http://localhost:8080/${product.pictureLink}`} className="cart__card-img" alt={product.name} /> */}
         <h1 className="cart__card__title">{product.name}</h1>
       </div>
       <div className='cart__card__button-container'>
         <button
           className='cart__card__button cart__card__button-minus'
-          onClick={() => handleDeleteProductQuantity(product)}
+          type='button'
+          onClick={handleDeleteProductQuantity}
         >
-          <img src={minusImg} />
+          <img src={minusImg} alt="Minus" />
         </button>
         <h2 className='cart__card__number'>{product.quantity}</h2>
         <button
           className='cart__card__button cart__card__button-plus'
-          onClick={() => handleAddProductQuantity(product)}
+          type='button'
+          onClick={handleAddProductQuantity}
         >
-          <img src={plusImg} />
+          <img src={plusImg} alt="Plus" />
         </button>
       </div>
-      <div >
+      <div>
         <h2 className="cart__card__price">
           {`${product.price} UAH`}
         </h2>
       </div>
       <button
-        onClick={() => handleAddCartProduct(product)}
+        onClick={handleAddCartProduct}
         className="cart__card__button__cross"
       >
-        <img src="/images2/cross.svg" />
+        <img src="/images2/cross.svg" alt="Cross" />
       </button>
     </div>
-  )
-}
+  );
+});

@@ -16,28 +16,37 @@
 
   &-first-container {
     // height: 86vh;
-    min-height: 90vh;
+    // min-height: 90vh;
+    min-height: 800px;
   }
 
   &-img {
     position: absolute;
     top: 0;
     width: 100%;
-    min-height: 90vh;
+    // min-height: 90vh;
+    // min-height: 90vh;
     background-size: cover;
     // height: 81vh;
 
     &-about {
       background-image: url(../../images//back-about-img.svg);
       // width: 100%;
+      min-height: 800px;
+
     }
 
     &-contact {
       background-image: url(../../images//back-contact-img.svg);
+      min-height: 800px;
     }
 
     &-more {
       background-image: url(../../images/back-more-img.svg);
+      // min-height: 110vh;
+      // min-height: 110vh;
+      min-height: 800px;
+
     }
 
     &-wine {
@@ -134,23 +143,24 @@
     }
 
     &__amount {
-      position: relative;
-      bottom: 3px;
-      padding-top: 1px;
+      position: absolute;
+      // bottom: 3px;
+      top: -2px;
+      // padding-top: 1px;
       left: 8px;
       border-radius: 50%;
       width: 14px;
       height: 14px;
-      background-color: #871C1C;
+      background-color: $active-color;
       @extend %mohave-500;
-      color: var(--Secondary-1, #F2F1E9);
+      color: $back-color;
       font-size: 11px;
       line-height: 120%; /* 13.2px */
       text-transform: uppercase;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #F2F1E9;
+      border: 1px solid $back-color;
       text-decoration: none;
       // padding-bottom: 10px;
       // margin-left: 10px;
@@ -166,14 +176,20 @@
     &-heart {
       width: 24px;
       height: 24px;
+      // top: 3px;
+      // left: 2px;
+      background-repeat: no-repeat;
       background-image: url(../../images/heart.svg);
 
       &-active {
         // margin-left: 4.5px;
         // margin-top: 6px;
         position: relative;
-        top: 3px;
-        left: 2px;
+        top: 3.1px;
+        // left: 2px;
+        right: -2px;
+        // top: -0px;
+        // left: -0px;
         width: 24px;
         height: 24px;
         background-repeat: no-repeat;

@@ -72,12 +72,12 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
               onClick={handleIsActive}
             ></button>
           </div>
-          <div className='comment__form__name-container'>
-            <label className='comment__form__name__label'>Enter Your Name</label>
+          <div className='comment__form__input__name-container'>
+            <label className='comment__form__input__name__label'>Enter Your Name</label>
             <input
               type="text"
               placeholder="Name Surname"
-              className='comment__form__name'
+              className='comment__form__input comment__form__input__name'
               value={name}
               onChange={handleNameUpdate}
               required
@@ -90,16 +90,14 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
                 editable={true}
                 rating={rating}
                 setRating={setRating}
-                // averageRating={}
               />
             </div>
             <textarea
-              className='comment__form__textarea'
+              className='comment__form__input comment__form__input__textarea'
               placeholder="Your Review"
               value={message}
               onChange={handleMessageUpdate}
               required
-              // onChange={handleMessageUpdate}
             >
             </textarea>
           </div>

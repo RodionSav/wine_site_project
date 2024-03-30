@@ -26,6 +26,7 @@ export const AboutPage = () => {
         </div>
         <div className='story-container-additional'>
           <div className='story-container story-container-second'>
+            
             <p className='story__paragraph story__paragraph-second'>The first vineyards were planted by the prince on the recommendation of the <br></br> chief winemaker, Prince Lev Golitsyn. And in the chateau, wine cellars for 180 <br></br> thousand buckets were built and a winery was built.</p>
             <div className='story-img story-img-1' />
           </div>
@@ -48,7 +49,7 @@ export const AboutPage = () => {
           </div>
         </div>
         <div className='story-container story-container-fourth'>
-          <p className='story__paragraph'>One of the 8 underground galleries, starting in 1958, preserves a collection of<br></br> more than 10,000 dances, among which there are close <br></br>7,000 wines are rare copies, and a few dances were preserved from the prince’s<br></br> own hours.</p>
+          <p className='story__paragraph story__paragraph-fourth'>One of the 8 underground galleries, starting in 1958, preserves a collection of<br></br> more than 10,000 dances, among which there are close <br></br>7,000 wines are rare copies, and a few dances were preserved from the prince’s<br></br> own hours.</p>
           <div className='story-img story-img-3' />
         </div>
         <div className='story-container story-container-fifth'>

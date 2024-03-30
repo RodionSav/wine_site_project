@@ -46,6 +46,18 @@ export const NewOrder: React.FC<Props> = ({ isActive, setIsActive }) => {
     alert("Successfully copied!");
   }
 
+  useEffect(() => {
+    if (isActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isActive]);
+
   return (
     <div className="order" style={{ overflowY: 'auto' }}>
       <div className="order-container">

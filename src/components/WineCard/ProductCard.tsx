@@ -2,8 +2,8 @@ import './product.scss';
 import wineImg from '../../images/wineImg.svg';
 import starImg from '../../images/star.svg';
 import { Product } from '../../types/Product';
-import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { FC, useEffect, useState } from 'react';
 import { ProductCartAction } from '../buttonActions/ProductCardAction';
 
 type ProductType = {
@@ -32,10 +32,12 @@ export const ProductCard
     <div className='product__card'>
       <NavLink
         to={`/products/${product.id}`}
+        // to={`/products/${location.pathname}`
         onClick={() => setIsActive && setIsActive(false)}
       >
         {/* <img src={productWithImage} /> */}
         <img src={`http://localhost:8080/${product.pictureLink2}`} className='product-img'/>
+        {/* <img src={`https://wine-stere-educated-tray-production.up.railway.app/${product.pictureLink2}`} className='product-img' /> */}
         {/* <img src={wineImg} /> */}
       </NavLink>
       <div className='product-container'>

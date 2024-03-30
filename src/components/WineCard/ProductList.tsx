@@ -17,9 +17,7 @@ export const ProductList: React.FC<Props> = ({
   setIsActive
 }) => {
   const dispatch = useAppDispatch();
-  const { items: products } = useAppSelector(state => state.products);
-  // const [products, setProducts] = useState(productsFromServer);
-  // const [products, setProducts] = useState([]);
+  const { items: products, loaded: isLoading } = useAppSelector(state => state.products);
   const [position, setPosition] = useState(1640);
 
   const nextButtonHandle = () => {

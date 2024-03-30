@@ -26,8 +26,18 @@ export const YourCartCard: React.FC<Props> = ({ product }) => {
     dispatch(productActions.decreaseProductQuantity())
   }
 
+  const handleDeleteProduct = (newProduct: Product) => {
+    dispatch(cartActions.deleteCartProducts(newProduct.id));
+  }
+
   return (
     <div className="order__card">
+      <button
+        className="order__card__button-cross"
+        onClick={() => handleDeleteProduct(product)}
+      >
+        <img src="images2/close.svg" />
+      </button>
       <div className="order__card-img-container">
         <img src={`http://localhost:8080/${product.pictureLink}`} className="cart__card-img"/>
         <h1 className="order__card__title">{product.name}</h1>

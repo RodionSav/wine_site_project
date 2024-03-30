@@ -4,7 +4,7 @@ import '../../components/GeneralStyle/Page.scss';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { ProductList } from './ProductList';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ProductCardDetailsAction } from '../buttonActions/ProductCardDetailsAction';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as productsActions from '../features/productSlicer';
@@ -13,8 +13,10 @@ import { AddingCommentForm } from '../buttonActions/addingComment';
 import { Review } from './Review';
 import { StarRatingWithoutEdit } from '../Rating/StarRatingWithoutEdir';
 import { AddToCart } from '../CartPage/AddToCart';
+import { Loader } from '../Loader/Loader';
 
 export const ProductDetails = () => {
+
   const [toggle, setToggle] = useState(true);
 
   const [isActiveCart, setIsActiveCart] = useState(false);
@@ -25,10 +27,11 @@ export const ProductDetails = () => {
 
   const currentProduct = useAppSelector(state => state.products.itemDetails);
 
+  const { loaded: loading } = useAppSelector(state => state.products);
+
   const comments = useAppSelector(state => state.comments.items);
 
   const noComments = 'There is no reviews. You could be first.';
-
 
   const [isActive, setIsActive] = useState(false);
 
@@ -39,11 +42,13 @@ export const ProductDetails = () => {
 
   }, [])
 
+
+
   useEffect(() => {
     dispatch(productsActions.productDetailsInit(Number(productId)));
 
-    console.log(currentProduct)
-  }, [])
+    console.log(currentProduct);
+  }, [productId]);
 
   const capitalizeDescription = (caption: string) => {
     return caption.charAt(0).toUpperCase() + caption.slice(1);
@@ -72,7 +77,8 @@ export const ProductDetails = () => {
     <AddToCart
       setIsActive={setIsActiveCart}
     />}
-    <div className='product-details'>
+    {loading ? <Loader /> :
+     <div className='product-details'>
       <div className="product-details-container">
         <ul className='product-details__list'>
           <li className='product-details__item product-details__item-first'>
@@ -97,7 +103,8 @@ export const ProductDetails = () => {
         <h2 className='product-details__edition'>Limited Edition Wine</h2>
         <div className='product-details-img-container'>
           {/* <img src={productDetailsImg} /> */}
-          <img src={`http://localhost:8080/${currentProduct?.pictureLink}`} className='product-details-img' />
+          {/* <img src={`http://localhost:8080/${currentProduct?.pictureLink}`} className='product-details-img' /> */}
+          <img src={`https://wine-stere-educated-tray-production.up.railway.app/${currentProduct?.pictureLink}`} className='product-details-img' />
           <div>
             <div className='product-details__grade__main-container'>
               <div>
@@ -194,10 +201,12 @@ export const ProductDetails = () => {
           {!toggle && comments.length === 0 && noComments}
         </div>
       </div>
-    </div>
+    </div>}
     <div className='product-details-container-second'>
       <h1 className='product-details__title_ad'>You might also like</h1>
-      <ProductList />
+      <div className='product-details__slider'>
+        <ProductList />
+      </div>
     </div>
     </>
   )

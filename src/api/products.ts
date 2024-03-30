@@ -35,7 +35,7 @@ export function createOrder({
 }
 
 export function getReviews(productId: number) {
-  return client.get<CommentType>(`/reviews/wine/${productId}`)
+  return client.get<CommentType>(`/reviews/wines/${productId}`)
 }
 
 export function createReview({wineId, userFirstAndLastName, message, rating}: CommentType) {

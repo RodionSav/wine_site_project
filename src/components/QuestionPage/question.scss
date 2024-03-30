@@ -34,7 +34,7 @@
 
   &__title {
     @extend %mohave-400;
-    color: var(--0-Grey, #FFF);
+    color: $white-color;
     font-size: 64px;
     line-height: 120%;
     text-transform: uppercase;
@@ -50,32 +50,32 @@
     justify-content: center;
     align-items: center;
     @extend %mohave-400;
-    color: var(--Primary-1-Color, #871C1C);
+    color: $active-color;
     font-size: 16px;
     line-height: 100%;
     text-transform: uppercase;
     text-decoration: none;
 
     &-accept {
-      background-color: #871C1C;
-      color: var(--0-Grey, #FFF);
+      background-color: $active-color;
+      color: $white-color;
       transition: all 0.3s;
 
       &:hover {
-        background-color: #FFF;
-        color: #871C1C;
+        background-color: $white-color;
+        color: $active-color;
       }
     }
 
     &-deny {
-      background-color: #FFF;
-      color: var(--Primary-1-Color, #871C1C);
-      border: 1px solid var(--Primary-1-Color, #871C1C);
+      background-color: $white-color;
+      color: $active-color;
+      border: 1px solid $active-color;
       transition: all 0.3s;
 
       &:hover {
-        background-color: #871C1C;
-        color: #FFF;
+        background-color: $active-color;
+        color: $white-color;
       }
     }
 

@@ -82,6 +82,9 @@ export const cartSlicer = createSlice({
       state.items = state.items.filter(item => item.id !== action.payload);
       state.itemsCart = state.itemsCart.filter(item => item.wineId !== action.payload);
       saveToLocalStorage(state);
+
+      // console.log(storedCart);
+      console.log(storedCartItem);
     },
     increaseQuantity: (state, action) => {
       const foundItem = state.items.find(item => item.id === action.payload);

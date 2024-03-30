@@ -1,4 +1,5 @@
 @import '../../styles/typography';
+@import '../../styles/variables';
 
 .founded {
   padding-top: 200px;
@@ -19,7 +20,7 @@
 
   &__title {
     @extend %mohave-400;
-    color: var(--80-Grey, #2A2A2D);
+    color: $back-more-color;
     font-size: 64px;
     line-height: 120%;
     text-transform: uppercase;
@@ -28,7 +29,7 @@
 
   &__subtitle {
     @extend %cormorant-infant-500;
-    color: var(--60-Grey, #53545A);
+    color: var(--60-Grey, $additional-title-color);
     font-size: 24px;
     line-height: 150%;
   }
@@ -41,7 +42,7 @@
     text-decoration: none;
     gap: 8px;
     @extend %mohave-400;
-    color: var(--0-Grey, #FFF);
+    color: $white-color;
     font-size: 16px;
     line-height: 100%;
     text-transform: uppercase;

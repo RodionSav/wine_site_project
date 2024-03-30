@@ -34,7 +34,7 @@
     @extend %mohave-500;
     font-size: 24px;
     line-height: 28.8px;
-    color: #151516;
+    color: $title-color;
     margin-bottom: 24px;
   }
 
@@ -42,31 +42,32 @@
     @extend %cormorant-infant-500;
     font-size: 20px;
     line-height: 30px;
-    color: #2A2A2D;
+    color: $back-more-color;
 
   }
 
   &__input {
     box-sizing: border-box;
     background-color: #E1DFD4;
-    border: 1px solid #53545A;
+    border: 1px solid $additional-title-color;
     @extend %cormorant-infant-500;
 
     width: 623px;
     height: 62px;
     font-size: 20px;
     line-height: 30px;
-    color: #86878D;
+    color: $input-title-color;
     padding-left: 16px;
+    outline: none;
 
-    // &:focus {
-    //   color: #000;
-    //   border: 1px solid #53545A;
-    // }
+    &:focus {
+      color: #000;
+      border: 1px solid $additional-title-color;
+    }
 
-    // &:invalid {
-    //   border: #C4390F;
-    // }
+    &:invalid {
+      border: 1px solid #C4390F;
+    }
 
     &-container {
       display: flex;
@@ -84,7 +85,7 @@
     @extend %mohave-500;
     font-size: 24px;
     line-height: 28.8px;
-    color: #86878D;
+    color: $input-title-color;
     text-transform: uppercase;
 
     &-container {
@@ -98,10 +99,6 @@
 
   &__radio {
     border-radius: 100%;
-    // padding: 16px;
-    // border: 3px solid #151516;
-    // cursor: pointer;
-
 
     &__label {
       @extend %cormorant-infant-500;
@@ -120,6 +117,7 @@
   &__card {
     position: relative;
     display: flex;
+    // align-items: center;
     border-bottom: 2px solid #E1DFD4;
 
     &-img {
@@ -128,6 +126,7 @@
 
       &-container {
         display: flex;
+        align-items: center;
         gap: 24px ;
       }
     }
@@ -137,10 +136,8 @@
       color: #000;
       @extend %cormorant-infant-500;
       text-transform: capitalize;
-      // font-family: "Cormorant Infant";
       font-size: 24px;
       font-style: normal;
-      // font-weight: 500;
       line-height: 150%;
     }
 
@@ -215,7 +212,7 @@
 
     &__title {
       @extend %mohave-400;
-      color: var(--80-Grey, #2A2A2D);
+      color: $back-more-color;
       font-size: 64px;
       line-height: 120%;
       text-transform: uppercase;
@@ -238,7 +235,7 @@
 
     &__subtitle {
       @extend %cormorant-infant-500;
-      color: var(--60-Grey, #53545A);
+      color: var(--60-Grey, $additional-title-color);
       font-size: 24px;
       line-height: 150%;
       margin-bottom: 40px;
@@ -252,16 +249,16 @@
       padding: 12px 32px;
       justify-content: center;
       align-items: center;
-      color: #fff;
+      color: $white-color;
       text-transform: uppercase;
       border: none;
-      background: var(--Primary-1-Color, #871C1C);
+      background: $active-color;
       margin-bottom: 186px;
       text-decoration: none;
       gap: 8px;
 
       &:hover {
-        background-color: #b13c27;
+        background-color: $active-color-hover;
       }
     }
   }
@@ -290,7 +287,7 @@
     padding-top: 30px;
     text-align: center;
     @extend %mohave-400;
-    color: var(--80-Grey, #fff);
+    color: $white-color;
     font-size: 36px;
     line-height: 120%;
     text-transform: uppercase;

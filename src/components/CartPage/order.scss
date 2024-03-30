@@ -3,19 +3,20 @@
 
 .order {
   background: rgba(42, 42, 45, 0.80);
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 1000;
   width: 100%;
-  height: 171.5%;
+  height: 100%;
   // padding-bottom: 200px;
 
   &-container {
     position: relative;
-    top: 200px;
-    background: var(--Secondary-1, #F2F1E9);
+    top: 100px;
+    background: $back-color;
     width: 90%;
-    min-height: 774px;
+    // min-height: 100%;
+    min-height: 400px;
     margin: auto;
     // padding-top: 400px;
     // margin-bottom: 200px;
@@ -46,7 +47,7 @@
 
     &__subtitle {
       @extend %mohave-500;
-      color: var(--100-Grey, #151516);
+      color: $title-color;
       font-size: 24px;
       line-height: 120%;
       text-transform: uppercase;
@@ -55,7 +56,7 @@
 
   &__title {
     @extend %mohave-400;
-    color: var(--100-Grey, #151516);
+    color: $title-color;
     text-align: center;
     font-size: 48px;
     line-height: 120%;
@@ -66,7 +67,7 @@
 
   &__name {
     @extend %mohave-400;
-    color: var(--Primary-2-Color, #B12C2C);
+    color:#B12C2C;
     font-size: 48px;
     line-height: 120%;
     text-transform: uppercase;
@@ -75,7 +76,7 @@
 
   &__total {
     @extend %mohave-500;
-    color: var(--40-Grey, #86878D);
+    color: var(--40-Grey, $input-title-color);
     font-size: 24px;
     line-height: 120%;
     text-transform: uppercase;
@@ -87,14 +88,16 @@
       align-items: center;
       gap: 175px;
       margin-top: 40px;
-      margin-left: 34%;
+      margin-left: 27%;
       margin-bottom: 50px;
     }
   }
 
   &__card {
+    position: relative;
     display: flex;
     align-items: center;
+    border-bottom: 3px solid #E1DFD4;
 
     &-container {
       margin: auto;
@@ -102,6 +105,17 @@
       align-items: center;
       gap: 24px ;
       flex-direction: column;
+    }
+
+    &__button {
+      &-cross {
+        position: absolute;
+        background: none;
+        border: none;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+      }
     }
 
     &__title {
@@ -125,7 +139,7 @@
 
     &__amount {
       @extend %mohave-400;
-      color: #000;
+      color: 000;
       font-size: 48px;
       line-height: 120%;
       text-transform: uppercase;
@@ -133,12 +147,14 @@
 
     &__price {
       @extend %mohave-400;
-      color: #000;
+      color: 000;
       font-size: 48px;
       line-height: 120%;
       text-transform: uppercase;
 
       &-container {
+        // position: relative;
+        // left: 10px;
         display: flex;
         gap: 168px;
       }
