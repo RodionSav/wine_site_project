@@ -33,7 +33,7 @@ export const FavouriteCard
     <div className='product__card'>
       <NavLink to={`/products/${product.id}`}>
         {/* <img src={productWithImage} /> */}
-        <img src={`http://localhost:8080/${product.pictureLink}`} className='product-img'/>
+        <img src={`https://wine-stere-educated-tray-production.up.railway.app//${product.pictureLink}`} className='product-img'/>
         {/* <img src={wineImg} /> */}
       </NavLink>
       <div className='product-container'>

@@ -36,8 +36,8 @@ export const ProductCard
         onClick={() => setIsActive && setIsActive(false)}
       >
         {/* <img src={productWithImage} /> */}
-        <img src={`http://localhost:8080/${product.pictureLink2}`} className='product-img'/>
-        {/* <img src={`https://wine-stere-educated-tray-production.up.railway.app/${product.pictureLink2}`} className='product-img' /> */}
+        {/* <img src={`http://localhost:8080/${product.pictureLink2}`} className='product-img'/> */}
+        <img src={`https://wine-stere-educated-tray-production.up.railway.app/${product.pictureLink2}`} className='product-img' />
         {/* <img src={wineImg} /> */}
       </NavLink>
       <div className='product-container'>

@@ -17,28 +17,39 @@ export const ProductList: React.FC<Props> = ({
   setIsActive
 }) => {
   const dispatch = useAppDispatch();
-  const { items: products, loaded: isLoading } = useAppSelector(state => state.products);
-  const [position, setPosition] = useState(1640);
+  const distance = 296 + 32;
+  const { items: products } = useAppSelector(state => state.products);
+  const initialPosition = (products.length * distance / 2) - (distance * 2);
+  const endPosition = (products.length * (distance) / 2) - (distance) * (products.length - 1);
+
+
+  useEffect(() => {
+    dispatch(actions.productsInit());
+  }, []);
+
+  useEffect(() => {
+    setPosition((products.length * distance / 2) - (distance * 2));
+  }, [products]);
+
+  const [position, setPosition] = useState((products.length * distance / 2) - (distance * 2));
 
   const nextButtonHandle = () => {
-    const distance = 296 + 32;
 
-    if (position === -1640) {
-      setPosition(1968);
-      // setPosition(distance * ((products.length - 1) / 2))
+    if (position === endPosition + 328) {
+      setPosition(initialPosition);
+    } else {
+      setPosition((prevPosition) => prevPosition - distance);
     }
-
-    setPosition((prevPosition) => prevPosition - distance)
 
     console.log(position)
 
   }
 
   const prevButtonHandle = () => {
-    const distance = 296 + 32;
 
-    if (position === 1640) {
-      setPosition(-1968)
+    if (position === initialPosition) {
+      setPosition(endPosition)
+      // setPosition()
     }
 
     setPosition((prevPosition) => prevPosition + distance)
@@ -47,9 +58,9 @@ export const ProductList: React.FC<Props> = ({
   }
 
   useEffect(() => {
-    dispatch(actions.productsInit());
+    console.log('длина массива = ', products.length)
+  }, [])
 
-  }, []);
 
 
   return (
