@@ -71,7 +71,9 @@ export const Header = () => {
           </div>
         </div>
         <div className="header-container header-container-third">
-          <div className="header__icon-plane" />
+          <a target="_blank" href='https://t.me/WineStore2024_bot'>
+            <div className="header__icon header__icon-plane" />
+          </a>
           <NavLink
             to='/favourites'
             className={getActiveClassHeart}

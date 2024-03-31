@@ -82,10 +82,14 @@ export const NewOrder: React.FC<Props> = ({ isActive, setIsActive }) => {
         </div>
         <div className="order__button-container">
           <h1 className="order__button__subtitle">you can receive an information about the delivery with our automated helper</h1>
-          <button className="page__button order__button">
+          <a
+            href="https://t.me/WineStore2024_bot"
+            className="page__button order__button"
+            target="_blank"
+          >
             <img src="images2/plane.png" />
             Connect
-          </button>
+          </a>
         </div>
       </div>
     </div>

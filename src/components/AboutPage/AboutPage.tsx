@@ -26,7 +26,6 @@ export const AboutPage = () => {
         </div>
         <div className='story-container-additional'>
           <div className='story-container story-container-second'>
-            
             <p className='story__paragraph story__paragraph-second'>The first vineyards were planted by the prince on the recommendation of the <br></br> chief winemaker, Prince Lev Golitsyn. And in the chateau, wine cellars for 180 <br></br> thousand buckets were built and a winery was built.</p>
             <div className='story-img story-img-1' />
           </div>
@@ -36,7 +35,6 @@ export const AboutPage = () => {
           <p className='story__paragraph story__paragraph-third'>At the World Exhibition in Paris, the best wine from the Trubetskoy estate - <br></br> Riesling - received the highest prize - the Grand Prix.</p>
         </div>
         <div className='story-course-container'>
-          {/* <img src={courseImg} className='story-course' alt={courseImg}/> */}
           <video src='/video/pexels.mp4' autoPlay muted loop className='story-course-video' />
           {/* <iframe src={videoFile} frameBorder="0" allowFullScreen></iframe> */}
           {/* <div className='story-course-video-back'/> */}
