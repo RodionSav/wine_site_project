@@ -43,7 +43,7 @@ export const ProductCard
         <div className='product__title-container'>
           <h2 className='product__title'>{product.year + ' ' + productShortName}</h2>
           <div className='product__grade-container'>
-            <h3 className='product__grade'>{product.averageRatingScore ? product.averageRatingScore : 0}</h3>
+            <h3 className='product__grade'>{product.averageRatingScore ? product.averageRatingScore.toFixed(1) : 0}</h3>
 
             <img src={starImg} className="product__star"/>
           </div>
