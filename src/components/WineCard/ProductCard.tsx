@@ -20,7 +20,6 @@ export const ProductCard
 
   const productWineColorFormat = product?.wineColor?.at(0) + product?.wineColor?.slice(1).toLowerCase();
   const productWineTypeFormat = product?.wineType?.at(0) + product?.wineType?.slice(1).toLowerCase();
-  const wineYear = product?.vendorCode?.slice(3);
 
   const capitalizeWords = (str: string) => {
     return str?.toLowerCase().replace(/(^|\s)\S/g, (char) => char.toUpperCase());
@@ -42,7 +41,7 @@ export const ProductCard
       </NavLink>
       <div className='product-container'>
         <div className='product__title-container'>
-          <h2 className='product__title'>{wineYear + ' ' + productShortName}</h2>
+          <h2 className='product__title'>{product.year + ' ' + productShortName}</h2>
           <div className='product__grade-container'>
             <h3 className='product__grade'>{product.averageRatingScore ? product.averageRatingScore : 0}</h3>
 

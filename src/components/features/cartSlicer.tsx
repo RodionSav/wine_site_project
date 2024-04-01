@@ -103,6 +103,12 @@ export const cartSlicer = createSlice({
       }
 
       saveToLocalStorage(state);
+    },
+    clearCartProducts: (state) => {
+      state.items = [];
+      state.itemsCart = [];
+
+      saveToLocalStorage(state);
     }
   },
   extraReducers: (builder) => {
@@ -136,7 +142,8 @@ export const {
   setCartProducts,
   deleteCartProducts,
   increaseQuantity,
-  decreaseQuantity
+  decreaseQuantity,
+  clearCartProducts
 } = cartSlicer.actions;
 
 export default cartSlicer.reducer;

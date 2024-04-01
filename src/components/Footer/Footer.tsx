@@ -14,7 +14,7 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-logo-container">
-        <Link to="/" className="footer__link">
+        <Link to="/about" className="footer__link">
           <div className="footer-logo" />
         </Link>
         <div className="footer__main-container">

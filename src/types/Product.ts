@@ -1,5 +1,6 @@
 export type Product = {
   id: number,
+  year: number,
   vendorCode: string,
   reserveType: any,
   name: string,
@@ -24,6 +25,7 @@ export type Product = {
 
 export type ProductDetailsType = {
   id: number;
+  year: number;
   vendorCode: string;
   reserveType: string;
   name: string;

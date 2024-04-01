@@ -126,15 +126,15 @@ export const WinePage = () => {
           case SortTypeAge.NoSorting:
             return true;
           case SortTypeAge.SortBy2016:
-            return product.vendorCode.slice(3) === SortTypeAge.SortBy2016;
+            return String(product.year) === SortTypeAge.SortBy2016;
           case SortTypeAge.SortBy2017:
-            return product.vendorCode.slice(3) === SortTypeAge.SortBy2017;
+            return String(product.year) === SortTypeAge.SortBy2017;
           case SortTypeAge.SortBy2018:
-            return product.vendorCode.slice(3) === SortTypeAge.SortBy2018;
+            return String(product.year) === SortTypeAge.SortBy2018;
           case SortTypeAge.SortBy2019:
-            return product.vendorCode.slice(3) === SortTypeAge.SortBy2019;
+            return String(product.year) === SortTypeAge.SortBy2019;
           case SortTypeAge.SortBy2020:
-            return product.vendorCode.slice(3) === SortTypeAge.SortBy2020;
+            return String(product.year) === SortTypeAge.SortBy2020;
         }
       })
 
@@ -205,7 +205,7 @@ export const WinePage = () => {
         </div>
         {!loading &&
         <div className="wine-container wine-container-second">
-          {sortedProducts.slice(9).map((product) => (
+          {sortedProducts.slice(8).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>}

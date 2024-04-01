@@ -31,6 +31,7 @@ export const NewOrder: React.FC<Props> = ({ isActive, setIsActive }) => {
 
   const handleCloseForm = () => {
     setIsActive(!isActive);
+    dispatch(actions.clearCartProducts());
   }
 
   useEffect(() => {
@@ -57,6 +58,19 @@ export const NewOrder: React.FC<Props> = ({ isActive, setIsActive }) => {
       document.body.style.overflow = '';
     };
   }, [isActive]);
+
+  useEffect(() => {
+    const handleUnload = (event: BeforeUnloadEvent) => {
+      dispatch(actions.clearCartProducts());
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, []);
 
   return (
     <div className="order" style={{ overflowY: 'auto' }}>
