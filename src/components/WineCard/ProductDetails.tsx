@@ -100,7 +100,7 @@ export const ProductDetails = () => {
           <h2 className='product-details__mrd'>{vendorCode}</h2>
           {/* <h2 className='product-details__mrd'>MRD 2019</h2> */}
         </div>
-        <h2 className='product-details__edition'>Limited Edition Wine</h2>
+        <h2 className='product-details__edition'>{currentProduct?.reserveType ? currentProduct.reserveType : ''}</h2>
         <div className='product-details-img-container'>
           {/* <img src={productDetailsImg} /> */}
           {/* <img src={`http://localhost:8080/${currentProduct?.pictureLink}`} className='product-details-img' /> */}
