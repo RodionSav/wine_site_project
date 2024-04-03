@@ -20,7 +20,8 @@ export type Product = {
   description: string,
   pictureLink: string | null,
   pictureLink2: string | null,
-  quantity: number
+  quantity: number,
+  tasteWine: string,
 }
 
 export type ProductDetailsType = {
@@ -45,7 +46,8 @@ export type ProductDetailsType = {
   description: string;
   pictureLink: string | null,
   pictureLink2: string | null,
-  quantity: number
+  quantity: number,
+  tasteWine: string
 };
 
 export type CommentType = {

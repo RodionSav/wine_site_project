@@ -136,7 +136,28 @@ export const WinePage = () => {
           case SortTypeAge.SortBy2020:
             return String(product.year) === SortTypeAge.SortBy2020;
         }
+      });
+
+      filteredProducts = filteredProducts.filter(product => {
+        switch(currentSortByTaste) {
+          case SortTypeByType.NoSorting:
+            return true;
+          case SortTypeTaste.AsianFood:
+            return product.tasteWine === SortTypeTaste.AsianFood;
+          case SortTypeTaste.Deserts:
+            return product.tasteWine === SortTypeTaste.Deserts;
+          case SortTypeTaste.Fish:
+            return product.tasteWine === SortTypeTaste.Fish;
+          case SortTypeTaste.Fruits:
+            return product.tasteWine === SortTypeTaste.Fruits;
+          case SortTypeTaste.RedMeat:
+            return product.tasteWine === SortTypeTaste.RedMeat;
+          case SortTypeTaste.SeaFood:
+            return product.tasteWine === SortTypeTaste.SeaFood;
+        }
       })
+
+
 
       return filteredProducts;
     }
