@@ -1,6 +1,6 @@
 import './commentForm.scss';
 import '../GeneralStyle/Page.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as actions from '../features/commentSlicer';
 import StarRating from '../Rating/StarRating';
@@ -17,7 +17,7 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
     setIsActive(!isActive);
   }
 
-  const {productId} = useParams();
+  const { productId } = useParams();
 
   const comments = useAppSelector(state => state.comments.items);
 
@@ -28,6 +28,9 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
   const [name, setName] = useState('');
 
   const [message, setMessage] = useState('');
+
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState('');
 
   const handleNameUpdate = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -46,9 +49,20 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
     };
 
     if (name.trim() && message.trim()) {
-      dispatch(actions.addComment(newComment));
+      // dispatch(actions.addComment(newComment));
 
-      setIsActive(!isActive);
+      // setIsActive(!isActive);
+
+      dispatch(actions.addComment(newComment))
+      .then((response) => {
+        if (!response) {
+          setError('')
+          setIsError(false);
+        } else {
+          setError('Title have been entered in incorrect format. Comment haven`t been added. You should enter in the format "Name Surname".');
+          setIsError(true);
+        }
+      });
 
     }
     console.log(comments);
@@ -60,6 +74,17 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
   };
 
   const isActiveButton = !name.trim() || !message.trim();
+
+  useEffect(() => {
+    if (isError) {
+      const timer = setTimeout(() => {
+        setIsError(false);
+        setError('');
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isError]);
 
   return (
     <div className='comment__form'>
@@ -82,6 +107,10 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
               onChange={handleNameUpdate}
               required
             ></input>
+            {isError &&
+              (<div className='comment__form__error'>
+              {error}
+            </div>)}
           </div>
           <div>
             <div className="comment__form__stars">
