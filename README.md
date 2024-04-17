@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Winery site
 
 You can watch project here [DEMO LINK](https://wine-site-project.vercel.app/).
 
