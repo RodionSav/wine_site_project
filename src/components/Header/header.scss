@@ -146,8 +146,8 @@
 
       &-active {
         position: relative;
-        top: 3.1px;
-        right: -2px;
+        // top: 3.1px;
+        // right: -2px;
         width: 24px;
         height: 24px;
         background-repeat: no-repeat;
@@ -156,8 +156,8 @@
     }
 
     &-cart {
-      width: 22px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
       background-image: url(../../images/shop.svg);
 
       &-active {
