@@ -32,7 +32,6 @@
       color: var(--80-Grey, $back-more-color);
       font-size: 48px;
       font-style: normal;
-    //   font-weight: 400;
       line-height: 120%;
       text-transform: uppercase;
 
@@ -84,7 +83,7 @@
         border: 1px solid $additional-title-color;
         padding: 16px;
 
-  
+
         &__label {
           @extend %cormorant-infant-500;
           color: $back-more-color;
@@ -92,7 +91,7 @@
           font-style: normal;
           line-height: 150%;
         }
-  
+
         &-container {
           display: flex;
           flex-direction: column;

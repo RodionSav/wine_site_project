@@ -4,7 +4,7 @@
 .comment {
   height: 463px;
   width: 624px;
-  border: 2px solid #E1DFD4;
+  border: 2px solid $input-back-color;
   box-sizing: border-box;
 
   &-container {
@@ -26,7 +26,6 @@
   }
 
   &-img {
-
     &-first {
       margin-bottom: 86px;
     }
@@ -35,14 +34,11 @@
       transform: rotate(180deg);
       margin-top: 161px;
     }
-
   }
 
   &__avatar {
     &-container {
       display: flex;
-    //   align-items: end;
-    //   align-items: center;
       justify-content: space-between;
     }
   }

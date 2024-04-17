@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { DropDown, OptionsType } from "../DropDown/DropDown";
-import { ProductCard } from "../WineCard/ProductCard"
+import { ProductCard } from "../ProductCard/ProductCard"
 import './wine.scss';
 import arrowImg from '../../images/arrow.svg';
 import '../AboutPage/About.scss';

@@ -21,7 +21,7 @@ export const commentsInit = createAsyncThunk<CommentResponseType[], number>(
   'comments/fetch',
   async (productId: number) => {
     const response = await getReviews(productId);
-    // Преобразование CommentType[] в CommentResponseType[]
+
     return response.map((comment: { id: any; userFirstName: any; userLastName: any; message: any; rating: any; reviewDate: string }) => ({
       id: comment.id,
       userFirstName: comment.userFirstName,
@@ -33,23 +33,12 @@ export const commentsInit = createAsyncThunk<CommentResponseType[], number>(
   }
 );
 
-// export const commentsInit = createAsyncThunk<CommentType>('comments/fetch', (productId: number) => {
-//   return getReviews(productId);
-// })
-
 export const addComment = createAsyncThunk<CommentType, CommentType>('comments/add',
     async (comment: CommentType) => {
       const response = await createReview(comment);
       return response as CommentType;
     }
   );
-
-// export const addComment = createAsyncThunk<CommentType, CommentType>('comments/add', (product: CommentType) => {
-//   console.log(product);
-
-//   return createReview(product);
-
-// })
 
 const commentsSlice = createSlice({
   name: 'comments',
@@ -63,16 +52,6 @@ const commentsSlice = createSlice({
     builder.addCase(commentsInit.pending, (state) => {
       state.loaded = true;
     });
-    // builder.addCase(commentsInit.fulfilled, (state, action) => {
-    //   state.items = action.payload.map(comment => ({
-    //     ...comment,
-    //     id: 0,
-    //     userFirstName: '',
-    //     userLastName: '',
-    //     reviewDate: '',
-    //   }));
-    //   state.loaded = false;
-    // });
     builder.addCase(commentsInit.fulfilled, (state, action) => {
       state.items = action.payload;
       state.loaded = false;

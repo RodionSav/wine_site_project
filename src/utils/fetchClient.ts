@@ -1,12 +1,3 @@
-// export const BASE_URL
-// = '';
-
-// export const BASE_URL
-// = 'https://wine-store-app-copy-production.up.railway.app/api';
-
-// export const BASE_URL
-// = 'http://localhost:8080/api';
-
 export const BASE_URL
 = 'https://wine-stere-educated-tray-production.up.railway.app/api';
 

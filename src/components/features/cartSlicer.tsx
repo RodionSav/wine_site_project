@@ -5,7 +5,6 @@ import { createOrder, getOrders, getSelectedOrder } from "../../api/products";
 const storedCart = localStorage.getItem('productCart');
 const storedCartItem = localStorage.getItem('productCartItem');
 
-// type CartItem = Product & { quantity: number };
 export type CartItem = {
   [x: string]: number;
   wineId: number,
@@ -55,7 +54,6 @@ export const cartSlicer = createSlice({
       state.items.push({
         ...action.payload,
         wineId: action.payload.id,
-        // quantity: 1
       });
 
       const { quantity, id } = action.payload;
@@ -66,25 +64,11 @@ export const cartSlicer = createSlice({
       });
 
       saveToLocalStorage(state);
-
-      // console.log(storedCart);
-      console.log(storedCartItem);
     },
-    // setCartProducts: (state, action) => {
-    //   const { quantity, id } = action.payload; // Деструктурируем необходимые свойства
-    //   state.items.push({
-    //     id: id,
-    //     quantity: quantity,
-    //   });
-    //   saveToLocalStorage(state);
-    // },
     deleteCartProducts: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload);
       state.itemsCart = state.itemsCart.filter(item => item.wineId !== action.payload);
       saveToLocalStorage(state);
-
-      // console.log(storedCart);
-      console.log(storedCartItem);
     },
     increaseQuantity: (state, action) => {
       const foundItem = state.items.find(item => item.id === action.payload);

@@ -4,12 +4,10 @@
 .footer {
   display: flex;
   width: 1280px;
-//   width: 100%;
   align-items: center;
   justify-content: space-between;
   background-color: $back-color;
   margin-left: 80px;
-//   margin-right: 80px;
   margin: auto;
 
   &-container {

@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import '../../images/LOGO.svg';
-// import './Footer.scss';
 import './Footer.scss';
 import classNames from "classnames";
 import woodImg from '../../images/wood.svg';

@@ -4,7 +4,6 @@
 .header {
   display: flex;
   width: 1280px;
-
   align-items: center;
   justify-content: space-between;
   margin-top: 83px;
@@ -12,11 +11,8 @@
   left:50%;
   transform:translate(-50%);
   z-index: 1000;
-  // gap: 50px;
 
   &-first-container {
-    // height: 86vh;
-    // min-height: 90vh;
     min-height: 800px;
   }
 
@@ -24,16 +20,11 @@
     position: absolute;
     top: 0;
     width: 100%;
-    // min-height: 90vh;
-    // min-height: 90vh;
     background-size: cover;
-    // height: 81vh;
 
     &-about {
       background-image: url(../../images//back-about-img.svg);
-      // width: 100%;
       min-height: 800px;
-
     }
 
     &-contact {
@@ -43,10 +34,7 @@
 
     &-more {
       background-image: url(../../images/back-more-img.svg);
-      // min-height: 110vh;
-      // min-height: 110vh;
       min-height: 800px;
-
     }
 
     &-wine {
@@ -63,30 +51,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // flex-wrap: nowrap;
 
     &-first {
       width: 230px;
-      // gap: 112px;
-      // justify-content: space-between;
-
     }
 
     &-second {
       width: 230px;
-      // gap: 90px;
-      // margin-right: 177px;
-
-      // justify-content: space-between;
     }
 
     &-third {
-      // gap: 45px;
       width: 147px;
-      // display: flex;
-
-      // align-items: center;
-      // justify-content: space-between;
     }
   }
 
@@ -94,12 +69,9 @@
     display: flex;
     justify-content: space-between;
     width: 620px;
-    // gap: 227px;
   }
 
   &__title {
-    // display: flex;
-    // justify-content: space-between;
     font-size: 24px;
   }
 
@@ -123,7 +95,6 @@
     background-image: url(../../images/LOGO.svg);
     width: 251px;
     height: 57px;
-    // margin-right: 77px;
 
     &-container {
       width: 947px;
@@ -134,7 +105,6 @@
 
   &__icon {
     position: relative;
-    // top: 5px;
     transition: transform 0.3s;
     text-decoration: none;
 
@@ -144,9 +114,7 @@
 
     &__amount {
       position: absolute;
-      // bottom: 3px;
       top: -2px;
-      // padding-top: 1px;
       left: 8px;
       border-radius: 50%;
       width: 14px;
@@ -155,16 +123,13 @@
       @extend %mohave-500;
       color: $back-color;
       font-size: 11px;
-      line-height: 120%; /* 13.2px */
+      line-height: 120%;
       text-transform: uppercase;
       display: flex;
       align-items: center;
       justify-content: center;
       border: 1px solid $back-color;
       text-decoration: none;
-      // padding-bottom: 10px;
-      // margin-left: 10px;
-
     }
 
     &-plane {
@@ -176,20 +141,13 @@
     &-heart {
       width: 24px;
       height: 24px;
-      // top: 3px;
-      // left: 2px;
       background-repeat: no-repeat;
       background-image: url(../../images/heart.svg);
 
       &-active {
-        // margin-left: 4.5px;
-        // margin-top: 6px;
         position: relative;
         top: 3.1px;
-        // left: 2px;
         right: -2px;
-        // top: -0px;
-        // left: -0px;
         width: 24px;
         height: 24px;
         background-repeat: no-repeat;
@@ -207,5 +165,4 @@
       }
     }
   }
-
 }

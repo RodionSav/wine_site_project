@@ -48,7 +48,7 @@
 
   &__input {
     box-sizing: border-box;
-    background-color: #E1DFD4;
+    background-color: $input-back-color;
     border: 1px solid $additional-title-color;
     @extend %cormorant-infant-500;
 
@@ -61,12 +61,12 @@
     outline: none;
 
     &:focus {
-      color: #000;
+      color: $title-color;
       border: 1px solid $additional-title-color;
     }
 
     &:invalid {
-      border: 1px solid #C4390F;
+      border: 1px solid $invalid-input-color;
     }
 
     &-container {
@@ -99,12 +99,43 @@
 
   &__radio {
     border-radius: 100%;
+    appearance: none;
+    outline: none;
+
+    &::before {
+      content: '';
+      position: relative;
+      display: block;
+      top: 5px;
+      right: 5px;
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      border: 1px solid $additional-title-color;
+      cursor: pointer;
+    }
+
+    &:checked {
+      &::before {
+        content: '';
+        position: relative;
+        display: block;
+        top: 5px;
+        right: 5px;
+        width: 22px;
+        height: 22px;
+        border-radius: 5px;
+        background-repeat: no-repeat;
+        background-image: url(../../images/check-mark.svg);
+        cursor: pointer;
+      }
+    }
 
     &__label {
       @extend %cormorant-infant-500;
       font-size: 24px;
       line-height: 36px;
-    //   padding-left: 16px;
+      cursor: pointer;
     }
 
     &-container {
@@ -117,8 +148,7 @@
   &__card {
     position: relative;
     display: flex;
-    // align-items: center;
-    border-bottom: 2px solid #E1DFD4;
+    border-bottom: 2px solid $input-back-color;
 
     &-img {
       width: 105px;
@@ -133,7 +163,7 @@
 
     &__title {
       width: 159px;
-      color: #000;
+      color: $title-color;
       @extend %cormorant-infant-500;
       text-transform: capitalize;
       font-size: 24px;
@@ -142,7 +172,7 @@
     }
 
     &__price {
-      color: #000;
+      color: $title-color;
       @extend %mohave-400;
       font-size: 48px;
       font-style: normal;
@@ -269,7 +299,7 @@
   margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
-  background-color: #802f1d;
+  background-color: $error-color;
 
   &__button {
     border: none;

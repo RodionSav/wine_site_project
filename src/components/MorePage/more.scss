@@ -4,10 +4,8 @@
 .more {
 
   &__section {
-    // z-
     height: 78vh;
     width: 100%;
-    // margin: auto;
   }
 
   &-img {
@@ -16,14 +14,10 @@
   }
 
   &-container {
-    // position: absolute;
     background-color: $back-more-color;
     padding: 16px 8px 16px;
     opacity: 70%;
     width: 765px;
-    // margin: auto;
-    // top: 520px;
-    // left: 80px;
   }
 
   &__main {
@@ -33,7 +27,6 @@
       padding-top: 520px;
       width: 1280px;
       margin: auto;
-      // margin-top: 395px;
     }
   }
 
@@ -46,7 +39,6 @@
 
 .event {
   &__section {
-    // margin-top: 80px;
     width: 1280px;
     margin: auto;
     margin-top: 80px;
@@ -106,7 +98,6 @@
     &-second {
       position: absolute;
       left: 0;
-      // margin-bottom: 200px;
       transform: translateY(-40%);
     }
   }
@@ -130,7 +121,6 @@
     background-image: url(../../images/courseImg.jpg);
     height: 911px;
     max-width: 100%;
-    // background-position: center;
     background-position: 90%;
     background-position-y: 28%;
     background-size:cover
@@ -143,7 +133,6 @@
     background-color: $back-more-color;
     padding: 40px 16px 40px;
     opacity: 80%;
-    // z-index: 1;
   }
 
   &__main-container {
@@ -154,7 +143,6 @@
     font-size: 48px;
     line-height: 150%;
     color: $white-color;
-    // z-index: 10;
   }
 
   &__subtitle {
@@ -163,7 +151,6 @@
     line-height: 150%;
     margin-top: 16px;
     margin-bottom: 16px;
-
     @extend %cormorant-infant-500;
   }
 

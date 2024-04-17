@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import heartImg from '../../images/heart.svg';
 import plusImg from '../../images/plus.svg';
 import { Product } from '../../types/Product';
-import '../WineCard/product.scss';
+import '../ProductCard/product.scss';
 import * as favouriteActions from '../features/favouriteSlicer';
 import * as cartActions from '../features/cartSlicer';
 

@@ -36,12 +36,11 @@
   &__toggle {
     display: flex;
     align-items: center;
-    // margin-top: 8px;
     border: 0;
     width: 24px;
     height: 24px;
     margin-right: 8px;
-    background-image: url(../../images//dropdown-arrow.svg);
+    background-image: url(../../images/dropdown-arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -50,10 +49,8 @@
     list-style: none;
     width: 296px;
     height: 44px;
-    // background-color: $back-color;
 
     &__item {
-    //   background-color: $back-color;
 
       &__button {
         position: relative;
@@ -93,7 +90,7 @@
         margin-right: 8px;
 
         &_active {
-          background-image: url(../../images//active-square.svg);
+          background-image: url(../../images/active-square.svg);
         }
       }
     }

@@ -1,4 +1,4 @@
-import '../../components/WineCard/product.scss';
+import '../ProductCard/product.scss';
 import wineImg from '../../images/wineImg.svg';
 import heartImg from '../../images/heart.svg';
 import starImg from '../../images/star.svg';
@@ -32,9 +32,7 @@ export const FavouriteCard
   return (
     <div className='product__card'>
       <NavLink to={`/products/${product.id}`}>
-        {/* <img src={productWithImage} /> */}
         <img src={`https://wine-stere-educated-tray-production.up.railway.app//${product.pictureLink}`} className='product-img'/>
-        {/* <img src={wineImg} /> */}
       </NavLink>
       <div className='product-container'>
         <div className='product__title-container'>

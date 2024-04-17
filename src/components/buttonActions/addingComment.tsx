@@ -40,7 +40,7 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
     setMessage(event.target.value);
   }
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = async () => {
     const newComment = {
       wineId: Number(productId),
       userFirstAndLastName: name,
@@ -48,23 +48,23 @@ export const AddingCommentForm: React.FC<Props> = ({ isActive, setIsActive }) =>
       rating: rating,
     };
 
-    if (name.trim() && message.trim()) {
-      // dispatch(actions.addComment(newComment));
+    function hasTwoWords(inputString: string) {
+      const words = inputString.split(" ");
 
-      // setIsActive(!isActive);
-
-      dispatch(actions.addComment(newComment))
-      .then((response) => {
-        if (!response) {
-          setError('')
-          setIsError(false);
-        } else {
-          setError('Title have been entered in incorrect format. Comment haven`t been added. You should enter in the format "Name Surname".');
-          setIsError(true);
-        }
-      });
-
+      return words.length === 2;
     }
+
+    if (name.trim() && message.trim()) {
+      if (hasTwoWords(name)) {
+        dispatch(actions.addComment(newComment));
+        setError('');
+        setIsError(false);
+      } else {
+        setError('Title have been entered in incorrect format. Comment haven`t been added. You should enter in the format "Name Surname".');
+        setIsError(true);
+      }
+    }
+
     console.log(comments);
 
 

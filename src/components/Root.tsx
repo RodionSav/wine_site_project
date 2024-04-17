@@ -6,7 +6,7 @@ import { MorePage } from "./MorePage/MorePage";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
 import { WinePage } from "./WinePage/WinePage";
-import { ProductDetails } from "./WineCard/ProductDetails";
+import { ProductDetails } from "./ProductCard/ProductDetails";
 import { ScrollToTop } from "./ScrollToTop/ScrollToTop";
 import { FavouritePage } from "./FavouritePage/FavouritePage";
 import { CartPage } from "./CartPage/CartPage";

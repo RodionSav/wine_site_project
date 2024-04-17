@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Product } from "../../types/Product"
 import { CartList } from "./CartList"
 
@@ -17,6 +18,12 @@ export const CartFromConfirm: React.FC<Props> = ({
   error,
   handleErrorClose
 }) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div className="cart-container cart-container-second">
         <div className='cart__products-container'>
@@ -29,7 +36,12 @@ export const CartFromConfirm: React.FC<Props> = ({
         </div>
         <div className='cart__radio-container'>
           <label className='cart__radio__label'>
-            <input type="radio" className='cart__radio'></input>
+            <input
+              type="checkbox"
+              className='cart__radio'
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            ></input>
             This is order is a Gift
           </label>
           <button

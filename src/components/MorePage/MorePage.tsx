@@ -2,8 +2,6 @@ import './more.scss';
 import '../../components/GeneralStyle/Page.scss';
 import moreImg1 from '../../images/more-img-1.svg';
 import moreImg2 from '../../images/more-img-2.svg';
-// import commentImg1 from '../../images/comment1.svg';
-// import commentImg2 from '../../images/comment2.svg';
 import { Comment } from '../Comment/Comment';
 
 
@@ -16,16 +14,7 @@ export const MorePage = () => {
 
   return (
     <div className='more'>
-      {/* <section className='more__section'>
-        <img src={backImg} alt={backImg} className='more-img'/>
-        <div className='more__main-container'>
-          <div className='more-container'>
-            <p className='page__subtitle more__subtitle'>Nestled near the Black Sea's edge, a winery chateau unveils a panorama where <br></br> sea meets vine, crafting a sensory symphony where the terroir's whisper mingles <br></br> with the maritime melody, birthing wines that embody the essence of this <br></br> coastal haven</p>
-          </div>
-        </div>
-      </section> */}
       <section className='event__section'>
-        {/* <div className='page__grid'> */}
         <div className='event__main-container'>
           <div className='event-container event-container-first'>
             <h1 className='event__title'>Our events</h1>
@@ -42,7 +31,6 @@ export const MorePage = () => {
             <p className='event__paragraph'>Led by experienced local artists, our tours offer participants the opportunity to <br></br> unleash their inner creativity while savoring the finest wines our vineyard has <br></br> to offer. Whether you're a seasoned painter or a novice seeking inspiration, our <br></br> guided sessions cater to all skill levels, encouraging exploration and self-<br></br>expression in a relaxed and supportive environment.</p>
           </div>
         </div>
-        {/* </div> */}
         <div className='event-container event-container-third'>
           <h1 className='event__title'>Do not forget to book a visit in advance</h1>
           <button className='page__button event__button'>Book</button>
@@ -66,7 +54,6 @@ export const MorePage = () => {
                 become a somelier
               </button>
             </div>
-            
           </div>
           <div className='mastering-img'/>
         </div>
@@ -81,8 +68,6 @@ export const MorePage = () => {
             paragraph={commentParagraph2}
             name='Tim Miles'
           />
-          {/* <img src={commentImg1}/> */}
-          {/* <img src={commentImg2}/> */}
         </div>
       </section>
     </div>

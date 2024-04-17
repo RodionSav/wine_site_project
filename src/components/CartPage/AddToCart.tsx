@@ -3,7 +3,7 @@ import { YourCartCard } from "./YourCartCard";
 import '../buttonActions/commentForm.scss';
 import { NavLink } from "react-router-dom";
 import '../GeneralStyle/Page.scss';
-import { ProductList } from "../WineCard/ProductList";
+import { ProductList } from "../ProductCard/ProductList";
 
 type Props = {
   setIsActive: (isActive: boolean) => void;

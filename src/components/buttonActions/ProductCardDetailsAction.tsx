@@ -79,14 +79,10 @@ export const ProductCardDetailsAction: React.FC<Props> = ({
         className='product-details-heart-container'
       >
         <button
-          // className='product-details__button-heart'
           className={classNames('product-details__button-heart',
           {'product-details__button-heart_active': isFavourite })}
           onClick={() => handleAddFavourite(product)}
-        >
-        {/* <img src={heartImg} /> */}
-
-        </button>
+        ></button>
       </div>
       <div className='product-details__button-container'>
         <button
@@ -104,7 +100,6 @@ export const ProductCardDetailsAction: React.FC<Props> = ({
         </button>
       </div>
       <button
-        // className='page__button'
         className={classNames('page__button',
         {'page__button_active': isCartProduct })}
         onClick={() => handleAddCartProduct(product)}

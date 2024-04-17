@@ -10,7 +10,6 @@
     position: relative;
     font-size: 24px;
     z-index: 1000;
-    // margin-top: 24px;
   }
 
   &-container {
@@ -19,16 +18,12 @@
   }
 
   &__header__section {
-    // width: 1280px;
-    // margin: auto;
     height: 78vh;
-    // height: 108vh;
   }
 
   &__section {
     display: flex;
     justify-content: space-between;
-    // margin: 128px 80px 0;
     width: 1280px;
     margin: auto;
     margin-top: 128px;

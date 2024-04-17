@@ -2,8 +2,8 @@ import './About.scss';
 import '../GeneralStyle/Page.scss';
 import '../../components/ContactPage/Contact.scss';
 import map from '../../images/map.svg';
-import { ProductCard } from '../WineCard/ProductCard';
-import { ProductList } from '../WineCard/ProductList';
+import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductList } from '../ProductCard/ProductList';
 import arrowImg from '../../images/arrow.svg';
 
 export const AboutPage = () => {

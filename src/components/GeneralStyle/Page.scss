@@ -5,16 +5,9 @@
   background-color: $back-color;
 
   &-container {
-    // position: absolute;
     width: 1280px;
-    // display: flex;
-    // justify-content: start;
-    // flex-direction: column;
     z-index: 1000;
     padding-top: 470px;
-    // margin-top: 470px;
-    // top: 470px;
-    // left: 5%;
   }
 
   &__title {
@@ -31,7 +24,6 @@
   }
 
   &__button {
-    // position: absolute;
     width: 296px;
     height: 42px;
     background-color: $active-color;
@@ -47,7 +39,7 @@
     }
 
     &_active {
-      background-color: #b12c2c;
+      background-color: $order-name-color;
     }
   }
 }

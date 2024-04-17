@@ -1,8 +1,7 @@
 import './favourite.scss';
 import '../AboutPage/About.scss';
 import { useAppSelector } from '../../app/hooks';
-// import { FavouriteCard } from './FavouriteCard';
-import { ProductCard } from '../WineCard/ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 export const FavouritePage = () => {
 
