@@ -36,7 +36,7 @@ export const NewOrder: React.FC<Props> = ({ isActive, setIsActive }) => {
 
   useEffect(() => {
     dispatch(actions.cartOrdersGetInit());
-    dispatch(actions.cartSelectedOrderInit(orders.length));
+    dispatch(actions.cartSelectedOrderInit(orders.length + 1));
 
     console.log('Количество заказов:', orders);
     console.log('Последний заказ', newOrderCode);
@@ -58,6 +58,10 @@ export const NewOrder: React.FC<Props> = ({ isActive, setIsActive }) => {
       document.body.style.overflow = '';
     };
   }, [isActive]);
+
+  useEffect(() => {
+    console.log('Заказы', orders)
+  }, [])
 
   useEffect(() => {
     const handleUnload = (event: BeforeUnloadEvent) => {
