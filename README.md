@@ -1,4 +1,4 @@
-# Winery site
+# Stoic Winery
 
 You can watch project here [DEMO LINK](https://wine-site-project.vercel.app/).
 
