@@ -6,6 +6,7 @@ import plusImg from '../../images/plus.svg';
 import { Product } from '../../types/Product';
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { BASE_URL } from '../../utils/fetchClient';
 
 type ProductType = {
   product: Product;
@@ -32,7 +33,7 @@ export const FavouriteCard
   return (
     <div className='product__card'>
       <NavLink to={`/products/${product.id}`}>
-        <img src={`https://wine-stere-educated-tray-production.up.railway.app//${product.pictureLink}`} className='product-img'/>
+        <img src={`${BASE_URL}/${product.pictureLink?.slice(4)}`} className='product-img'/>
       </NavLink>
       <div className='product-container'>
         <div className='product__title-container'>

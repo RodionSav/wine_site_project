@@ -5,6 +5,7 @@ import { Product } from '../../types/Product';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FC, useEffect, useState } from 'react';
 import { ProductCartAction } from '../buttonActions/ProductCardAction';
+import { BASE_URL } from '../../utils/fetchClient';
 
 type ProductType = {
   product: Product;
@@ -33,7 +34,7 @@ export const ProductCard
         to={`/products/${product.id}`}
         onClick={() => setIsActive && setIsActive(false)}
       >
-        <img src={`https://wine-stere-educated-tray-production.up.railway.app/${product.pictureLink2}`} className='product-img' />
+        <img src={`${BASE_URL}/${product.pictureLink2?.slice(4)}`} className='product-img' />
       </NavLink>
       <div className='product-container'>
         <div className='product__title-container'>

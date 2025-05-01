@@ -4,6 +4,7 @@ import plusImg from '../../images/plusImg.svg';
 import minusImg from '../../images/minusImg.svg';
 import { useAppDispatch } from "../../app/hooks";
 import * as cartActions from '../features/cartSlicer';
+import { BASE_URL } from '../../utils/fetchClient';
 
 type Props = {
   product: Product;
@@ -27,7 +28,7 @@ export const CartCard: React.FC<Props> = React.memo(({ product }) => {
   return (
     <div className="cart__card">
       <div className="cart__card-img-container">
-        <img src={`https://wine-stere-educated-tray-production.up.railway.app/${product.pictureLink}`} className="cart__card-img" alt={product.name} />
+        <img src={`${BASE_URL}/${product.pictureLink?.slice(4)}`} className="cart__card-img" alt={product.name} />
         <h1 className="cart__card__title">{product.name}</h1>
       </div>
       <div className='cart__card__button-container'>

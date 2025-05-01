@@ -14,6 +14,7 @@ import { Review } from './Review';
 import { StarRatingWithoutEdit } from '../Rating/StarRatingWithoutEdir';
 import { AddToCart } from '../CartPage/AddToCart';
 import { Loader } from '../Loader/Loader';
+import { BASE_URL } from '../../utils/fetchClient';
 
 export const ProductDetails = () => {
 
@@ -101,7 +102,7 @@ export const ProductDetails = () => {
         </div>
         <h2 className='product-details__edition'>{currentProduct?.reserveType !== null ? currentProduct?.reserveType : ' '}</h2>
         <div className='product-details-img-container'>
-          <img src={`https://wine-stere-educated-tray-production.up.railway.app/${currentProduct?.pictureLink}`} className='product-details-img' />
+          <img src={`${BASE_URL}/${currentProduct?.pictureLink?.slice(4)}`} className='product-details-img' />
           <div>
             <div className='product-details__grade__main-container'>
               <div>

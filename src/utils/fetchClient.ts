@@ -1,5 +1,5 @@
 export const BASE_URL
-= 'https://wine-stere-educated-tray-production.up.railway.app/api';
+= 'http://localhost:8080/api';
 
 function wait(delay: number) {
   return new Promise(resolve => {
